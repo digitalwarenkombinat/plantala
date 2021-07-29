@@ -16,3 +16,6 @@ yarn-error.log*
 
 # Next.js
 /.next
+
+# Input Images
+/public/images/input/*
