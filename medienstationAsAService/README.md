@@ -21,7 +21,7 @@
 
 Zum automatisierten Freistellen von Digitalisaten wird _Rembg_ verwendet. _Rembg_ ist ein Werkzeug zum Entfernen des Hintergrunds von Bildern.
 
-Für die Installation von _Rembg_ wird ein Dockerfile bereitgestellt um alle Objekte freizustellen.
+Für die Installation von _Rembg_ wird ein Dockerfile bereitgestellt, um alle Objekte freizustellen.
 
 Kopiere zunächst alle Bilder nach $PWD/public/images/input.
 Bitte beachte folgende Hinweise:
@@ -56,7 +56,7 @@ Im Anschluss können die beiden Docker Container plantala-media und plantala-app
 
 <br />
 
-Nach dem Erzeugen der freigestellten Objekten erfolgt ein automatisierte Generierung des Datenmodells im JS-Dateiformat. In der erzeugten Datei data.json können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
+Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im JS-Dateiformat. In der erzeugten Datei data.json können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
 
 Jedes Datenobjekt beinhaltet 5 Elemente.
 
