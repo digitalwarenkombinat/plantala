@@ -1,10 +1,13 @@
 {
-  "name": "nextjs",
-  "version": "4.0.0",
+  "name": "plantala",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.11.2",
     "clsx": "latest",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.0.0",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
@@ -14,6 +17,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "createData": "node createData",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
