@@ -14,7 +14,7 @@
 
 - Kopiere deine Bilder nach `public/images/input`
 - Starte die Docker Container mit `docker-compose up -d --build`
-- Bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Anwendung in `public/data.tsx`
+- Bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Anwendung in `public/mediaData.tsx`
 
 <br />
 
@@ -28,7 +28,7 @@
 
 <br />
 
-Kopiere zunächst all deine Bilder nach `public/images/input`.
+Kopiere zunächst all deine Bilder nach `public/images/input`. Kopiere zusätzlich 2 Dateien mit den Namen `logo.png` und `main.png` nach `public/images` für dein persönliches Anwendungslogo und dein Startbild.
 
 Bitte beachte dabei folgende Hinweise:
 
@@ -72,7 +72,7 @@ In diesem können die beiden Docker Container _plantala-media_ und _plantala-app
 
 <br />
 
-Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im TSX-Dateiformat. In der erzeugten Datei `data.tsx` können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
+Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im TSX-Dateiformat. Der Prozess wird mit `npm run media-data` gestartet. In der erzeugten Datei `public/mediaData.tsx` können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
 
 Jedes Datenobjekt beinhaltet 5 Elemente.
 
@@ -94,7 +94,7 @@ Jedes Datenobjekt beinhaltet 5 Elemente.
 ]
 ```
 
-Ebenfalls in der `data.tsx` können Änderungen an Primär- & Sekundärfarbe der Anwendung sowie am Hintergrund vorgenommen werden.
+Ebenfalls in der `public/mediaData.tsx` können Änderungen an Primär- & Sekundärfarbe der Anwendung sowie am Hintergrund vorgenommen werden.
 
 Folgende Farbwerte können angepasst werden:
 
@@ -109,6 +109,8 @@ const successColor = '#f3aa1e';     // Farbe für Erfolgsmeldungen innerhalb der
 ```
 
 ## Fertig. Deine Anwendung kann nun bereitgestellt werden 🎉
+
+Stoppe die Docker Container mit `docker-compose stop`.
 
 ---
 

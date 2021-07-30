@@ -1,5 +1,6 @@
 import { blue } from '@material-ui/core/colors';
 import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { mediaData } from '../public/mediaData' ;
 
 declare module '@material-ui/core/styles/createPalette' {
   export interface PaletteOptions {
@@ -9,13 +10,13 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-const primaryColor = '#799160';
-const secondaryColor = '#e0bf96';
-const backgroundColor = '#faebd7';
-const textColor = '#341419';
-const errorColor = '#f3aa1e';
-const infoColor = '#ab465a';
-const successColor = '#f3aa1e';
+const primaryColor = mediaData.colors.primaryColor || '#799160';
+const secondaryColor = mediaData.colors.secondaryColor || '#e0bf96';
+const backgroundColor = mediaData.colors.backgroundColor || '#faebd7';
+const textColor = mediaData.colors.textColor || '#341419';
+const errorColor = mediaData.colors.errorColor || '#f3aa1e';
+const infoColor = mediaData.colors.infoColor || '#ab465a';
+const successColor = mediaData.colors.successColor || '#f3aa1e';
 
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
@@ -34,7 +35,7 @@ let theme = createTheme({
       primary: textColor,
     },
     error: {
-      main: infoColor,
+      main: errorColor,
     },
     info: {
       main: infoColor,

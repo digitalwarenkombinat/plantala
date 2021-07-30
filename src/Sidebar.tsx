@@ -8,17 +8,17 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import { data } from './data' ;
+import { mediaData } from '../public/mediaData';
 
-const hero = {
+const main = {
   title: 'Malen! ',
   description: 'Mandalas als ästhetischer und spielerischer Einstieg in die Pflanzenkunde',
 };
 
-const isNewData = data.images.length > 1;
-const itemPath = isNewData ? '' : 'plants/';
-const items = isNewData
-? data
+const hasMediaData = mediaData.images.length > 1;
+const mediaItemPath = hasMediaData ? '' : 'plants/';
+const mediaItems = hasMediaData
+? mediaData
 : {
       images: [
         {
@@ -74,16 +74,16 @@ const items = isNewData
       ],
     };
 
-const avatarCount = 3;
+const avatarCount = 5;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  hero: {
+  main: {
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
     marginBottom: theme.spacing(2),
   },
-  heroContent: {
+  mainContent: {
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '4em',
     },
   },
-  heroButton: {
+  mainButton: {
     color: '#fff',
   },
 }));
@@ -112,29 +112,29 @@ export default function Sidebar() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.hero}>
+    <Paper className={classes.main}>
       <Grid container>
         <Grid item md={6}>
-          <div className={classes.heroContent}>
+          <div className={classes.mainContent}>
             <Typography variant="h3" gutterBottom>
-              {hero.title}
+              {main.title}
             </Typography>
             <Typography variant="h5" paragraph>
-              {hero.description}
+              {main.description}
             </Typography>
-            <Button variant="contained" size="large" className={classes.heroButton}>
+            <Button variant="contained" size="large" className={classes.mainButton}>
               Start
             </Button>
           </div>
         </Grid>
       </Grid>
       <Grid container direction="column">
-        {items.images.slice(0, avatarCount).map((plant) => (
+        {mediaItems.images.slice(0, avatarCount).map((plant) => (
           <Grid key={plant.name} item container alignItems="center">
             <Avatar
               key={plant.name}
               alt={plant.name}
-              src={`/images/${itemPath}${plant.source}`}
+              src={`/images/${mediaItemPath}${plant.source}`}
               className={classes.plantAvatar}
             />
             <Typography variant="h6" gutterBottom>

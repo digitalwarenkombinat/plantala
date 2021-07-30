@@ -1,6 +1,10 @@
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
+import { mediaData } from '../public/mediaData' ;
+
+const hasMediaData = mediaData.images.length > 1;
+const mediaItemPath = hasMediaData ? '' : 'plants/';
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -15,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   mainImage: {
     backgroundColor: theme.palette.background.default,
-    backgroundImage: `url('/images/main.png')`,
+    backgroundImage: `url('/images/${mediaItemPath}main.png')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: 'center center',

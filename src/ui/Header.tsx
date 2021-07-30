@@ -11,6 +11,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Divider, ListItemIcon } from '@material-ui/core';
 import Fade from '@material-ui/core/Fade';
 
+import { mediaData } from '../../public/mediaData' ;
+
+const hasMediaData = mediaData.images.length > 1;
+const mediaItemPath = hasMediaData ? '' : 'plants/';
+
 const useStyles = makeStyles((theme: Theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
@@ -50,7 +55,7 @@ export default function Header() {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <img alt="Plantala logo" src="/images/logo.webp" className={classes.logo} />
+          <img alt="Plantala logo" src={`/images/${mediaItemPath}logo.png`} className={classes.logo} />
           <Typography className={classes.title} variant="h2">
             Plantala
           </Typography>

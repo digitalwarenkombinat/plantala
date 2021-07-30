@@ -6,9 +6,9 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.11.2",
     "clsx": "latest",
-    "fs": "^0.0.1-security",
     "fs-extra": "^10.0.0",
     "next": "latest",
+    "node-vibrant": "^3.2.1-alpha.1",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest"
@@ -17,6 +17,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "media-data": "node createMediaData.mjs",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {

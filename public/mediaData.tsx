@@ -1,4 +1,4 @@
-export const data = {
+export const mediaData = {
   "colors": {
     "primaryColor": "",
     "secondaryColor": "",
