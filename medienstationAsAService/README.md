@@ -2,10 +2,19 @@
 
 ## Features
 
-- in 3 Schritten zur eigenen Medienstation
-- automatisierter Datenimport
+- in nur 3 Schritten zur eigenen Medienstation
+- automatisierter Bilderimport samt Entfernen der Hintergründe
 - unterstützter Bearbeitungsmodus der Daten
+- Farben werden anhand deines Startbildes analysiert
 - Farbschema der Anwendung frei wählbar
+
+<br />
+
+## TL;DR
+
+- Kopiere deine Bilder nach `public/images/input`
+- Starte die Docker Container mit `docker-compose up -d --build`
+- Bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Anwendung in `public/data.tsx`
 
 <br />
 
@@ -15,7 +24,20 @@
 
 <br />
 
-### 1. automatisiertes Freistellen von Digitalisaten
+### Schritt 1. Kopiere deine Bilder
+
+<br />
+
+Kopiere zunächst all deine Bilder nach `public/images/input`.
+
+Bitte beachte dabei folgende Hinweise:
+
+- Für ein bestmögliches Ergebnis verwende am besten ein einzelnes Objekt mit einfarbigem Hintergrund pro Bild.
+- Der Dateiname wird als Titel der Bilder in der Anwendung verwendet. Bitte benenne die Bilder entsprechend dem dargestellten Objekt.
+
+<br />
+
+### Schritt 2. automatisiertes Freistellen deiner Bilder
 
 <br />
 
@@ -23,13 +45,7 @@ Zum automatisierten Freistellen von Digitalisaten wird _Rembg_ verwendet. _Rembg
 
 Für die Installation von _Rembg_ wird ein Dockerfile bereitgestellt, um alle Objekte freizustellen.
 
-Kopiere zunächst alle Bilder nach $PWD/public/images/input.
-Bitte beachte folgende Hinweise:
-
-- Für ein bestmögliches Ergebnis verwende am besten ein einzelnes Objekt mit einfarbigem Hintergrund pro Bild.
-- Der Dateiname wird als Titel der Bilder in der Anwendung verwendet. Bitte benenne die Bilder entsprechend dem dargestellten Objekt.
-
-Im Anschluss können die beiden Docker Container plantala-media und plantala-app mit folgendem Befehl gestartet werden:
+In diesem können die beiden Docker Container _plantala-media_ und _plantala-app_ mit folgendem Befehl gestartet werden:
 
 ```
 ➜ docker-compose up -d --build
@@ -52,11 +68,11 @@ Im Anschluss können die beiden Docker Container plantala-media und plantala-app
 
 <br />
 
-### 2. Hinzufügen von Hintergrundinformationen
+### Schritt 3: Hinzufügen von Hintergrundinformationen & Anpassen des Farbschemas
 
 <br />
 
-Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im JS-Dateiformat. In der erzeugten Datei data.json können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
+Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im TSX-Dateiformat. In der erzeugten Datei `data.tsx` können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
 
 Jedes Datenobjekt beinhaltet 5 Elemente.
 
@@ -78,13 +94,7 @@ Jedes Datenobjekt beinhaltet 5 Elemente.
 ]
 ```
 
-<br />
-
-### 3. Anpassen des Farbschemas
-
-<br />
-
-In einer einzigen Schemadatei können Änderungen an Primär- & Sekundärfarbe der Anwendung sowie am Hintergrund vorgenommen werden.
+Ebenfalls in der `data.tsx` können Änderungen an Primär- & Sekundärfarbe der Anwendung sowie am Hintergrund vorgenommen werden.
 
 Folgende Farbwerte können angepasst werden:
 

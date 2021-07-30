@@ -17,10 +17,10 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "createData": "node createData",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.4.5",
     "@types/react": "^17.0.15",
     "typescript": "^4.3.5"
