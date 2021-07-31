@@ -1,128 +1,150 @@
 # Medienstation as a Service - MaaS
 
-## Features
+Die _Medienstation as a Service_ (MaaS) bietet dir eine einfache Möglichkeit, die Vorzüge Plantalas mit deinen eigenen Bildern zu verbinden. Halbautomatisierte Schritte helfen dir dabei, auch ohne tiefgreifende technische Kenntnisse, deine Daten einzubinden und die Medienstation nach deinen Wünschen anzupassen.
+
+## Funktionen
 
 - in nur 3 Schritten zur eigenen Medienstation
-- automatisierter Bilderimport samt Entfernen der Hintergründe
+- automatisierter Bilderimport und Entfernen der Bildhintergründe
 - unterstützter Bearbeitungsmodus der Daten
 - Farben werden anhand deines Startbildes analysiert
-- Farbschema der Anwendung frei wählbar
+- Farbschema der Medienstation frei wählbar
+- spielerisch ästhetische Wissensvermittlung mit deinen Daten
+
+Im Folgenden zeigen wir dir, wie du deine eigene Medienstation erstellst.
 
 <br />
 
-## TL;DR
+# TL;DR
 
-- Kopiere deine Bilder nach `public/images/input`
-- Starte die Docker Container mit `docker-compose up -d --build`
-- Bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Anwendung in `public/mediaData.tsx`
+- Kopiere deine Bilder in der Ordner `public/images/input` und entwirf ein Logo `public/images/logo.png` sowie ein Startbild `public/images/start.png`
+- Starte die Medienstation mit `docker-compose up -d --build`
+- Erzeuge die Mediendaten mit `docker exec -d plantala-app npm run media-data` und bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Medienstation in `public/mediaData.tsx`
 
 <br />
 
-## In 3 Schritten zur eigenen Medienstation
+# In 3 Schritten zur eigenen Medienstation
+
+Deine eigene Medienstation erstellst du in 3 einfachen Schritten.
+
+1. Bilder kopieren
+2. Medienstation starten
+3. Bilder und Informationen anpassen
 
 ---
 
 <br />
 
-### Schritt 1. Kopiere deine Bilder
+## Schritt 1. Kopiere deine Bilder
 
 <br />
 
-Kopiere zunächst all deine Bilder nach `public/images/input`. Kopiere zusätzlich 2 Dateien mit den Namen `logo.png` und `main.png` nach `public/images` für dein persönliches Anwendungslogo und dein Startbild.
+Kopiere zunächst all deine Bilder in den Ordner `public/images/input`. Alle Bilder werden beim Start der Medienstation automatisch freigestellt (d.h. der Hintergrund wird entfernt) und in diese eingebunden.
 
-Bitte beachte dabei folgende Hinweise:
+Bitte beachte folgende Hinweise für deine Bilder:
 
 - Für ein bestmögliches Ergebnis verwende am besten ein einzelnes Objekt mit einfarbigem Hintergrund pro Bild.
-- Der Dateiname wird als Titel der Bilder in der Anwendung verwendet. Bitte benenne die Bilder entsprechend dem dargestellten Objekt.
+- Der Dateiname wird als Titel der Bilder in der Medienstation verwendet. Bitte benenne die Bilder entsprechend dem dargestellten Objekt.
 
 <br />
 
-### Schritt 2. automatisiertes Freistellen deiner Bilder
+Zusätzlich benötigt deine Medienstation ein Logo und ein Startbild. Diese beiden Bilder müssen nicht freigestellt werden und können somit direkt als `logo.png` bzw. `start.png` in den Ordner `public/images` (nicht `public/images/input`) eingefügt werden.
+
+Ist dies erledigt, kannst du deine Medienstation starten.
 
 <br />
 
-Zum automatisierten Freistellen von Digitalisaten wird _Rembg_ verwendet. _Rembg_ ist ein Werkzeug zum Entfernen des Hintergrunds von Bildern.
-
-Für die Installation von _Rembg_ wird ein Dockerfile bereitgestellt, um alle Objekte freizustellen.
-
-In diesem können die beiden Docker Container _plantala-media_ und _plantala-app_ mit folgendem Befehl gestartet werden:
-
-```
-➜ docker-compose up -d --build
-```
+## Schritt 2. Medienstation starten
 
 <br />
 
-<details>
-  <summary>Du möchtest kein Docker verwenden? Klicke hier für die alternative Installation</summary>
-  
-  ## Installationsschritte
-  1. Python 3.8 oder neuer installiert
-     * https://www.python.org/downloads/
-  2. Torch und Torchvision installiert
-     * ```➜ pip install torch==1.7.1+cpu torchvision==0.8.2+cpu -f https://download.pytorch.org/whl/torch_stable.html ```
-  3. Rembg installiert
-     * ```➜ pip install rembg ```
+Zum Starten der Medienstation wird eine Anwendung namens _Docker_ verwendet. Vereinfacht gesagt ist _Docker_ ein weiterer Computer auf deinem Computer. Dadurch erhältst du die Möglichkeit die Medienstation aufzurufen und das Entfernen der Hintergründe von all deinen kopierten Bildern zu starten.
 
-</details>
+_Docker_ installiert beim Starten automatisch alle benötigten Bibliotheken. Du musst auf deinem Computer somit keine weiteren Anwendungen außer _Docker_ installieren. Für die Installation klicke auf [Docker installieren](https://docs.docker.com/get-docker/) und wähle dein Betriebssystem aus.
+
+Nach abgeschlossener Installation kannst du deine Medienstation mit folgendem Aufruf starten:
+
+```
+docker-compose up -d --build
+```
+
+Dabei werden 2 sogenannte Container gestartet. Der Container _plantala-media-data_ entfernt in all deinen kopierten Bildern den Hintergrund und beendet sich danach.
+
+Der Container _plantala-app_ beinhaltet die komplette Medienstation und ist auf deinem Computer unter [diesem Link zu erreichen.](http://localhost:3000/)
+
+Hurra, deine Medienstation ist nun sichtbar. Damit all deine Bilder und Informationen in dieser erscheinen ist noch ein dritter und letzter Schritt notwendig.
 
 <br />
 
-### Schritt 3: Hinzufügen von Hintergrundinformationen & Anpassen des Farbschemas
+## Schritt 3: Hinzufügen von Hintergrundinformationen & Anpassen des Farbschemas
 
 <br />
 
-Nach dem Erzeugen der freigestellten Objekte erfolgt eine automatisierte Generierung des Datenmodells im TSX-Dateiformat. Der Prozess wird mit `npm run media-data` gestartet. In der erzeugten Datei `public/mediaData.tsx` können die Bilder optional bearbeitet sowie mit Hintergrundinformationen angereichert werden.
+Deine kopierten Bilder wurden alle im Hintergrund freigestellt und befinden sich nun neben deinem Logo sowie deinem Startbild im Ordner `public/images`.
 
-Jedes Datenobjekt beinhaltet 5 Elemente.
+Damit die Bilder in der Medienstation erscheinen, aktualisiere die Mediendaten.
 
-- _name_ bezeichnet den aus dem Dateinamen abgeleiteten Bildtitel, welcher in der Anwendung dargestellt wird
-- _source_ ist ein technische Pfadangabe zum freigestellten Bild
-- _description_ ist der Beschreibungstext zum Bild und wird ebenfalls in der Anwendung dargestellt
-- _link_ bietet die Möglichkeit eine externe Referenz (bspw. zum Originaldokument) anzugeben
-- _wiki_ bietet die Möglichkeit eine Verlinkung zu Wikimedia anzugeben
+Dies geschieht mit dem Aufruf:
 
 ```
-[
-  {
-    name: 'Kelchsaum der Erdnusspflanze',
-    source: 'AcaciaSenegal_klein',
-    description: 'ursprünglich aus den Anden; die ältesten Funde sind 5000 Jahre alt',
-    link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_461334/1/',
-    wiki: 'https://de.wikipedia.org/wiki/Erdnuss',
-  }
-]
+docker exec -d plantala-app npm run media-data
 ```
 
-Ebenfalls in der `public/mediaData.tsx` können Änderungen an Primär- & Sekundärfarbe der Anwendung sowie am Hintergrund vorgenommen werden.
+Öffne erneut den Link deiner Medienstation [mit diesem Link.](http://localhost:3000/)
 
-Folgende Farbwerte können angepasst werden:
+All deine Bilder werden nun in der Medienstation angezeigt. Weiterhin ist dein Logo und dein Startbild zu sehen. Dieses Startbild hat auch dafür gesorgt, dass sich das Farbschema der Medienstation verändert hat. Die bedeutendsten Farben aus dem Startbild werden nun als Primär- & Sekundärfarbe verwendet.
 
-```
-const primaryColor = '#799160';     // Primärfarbe der Anwendung
-const secondaryColor = '#e0bf96';   // Sekundärfarbe der Anwendung
-const backgroundColor = '#faebd7';  // Hintergrundfarbe der Anwendung
-const textColor = '#341419';        // Textfarbe der Anwendung
-const errorColor = '#f3aa1e';       // Farbe für Fehlermeldungen innerhalb der Anwendung
-const infoColor = '#ab465a';        // Farbe für Infomeldungen innerhalb der Anwendung
-const successColor = '#f3aa1e';     // Farbe für Erfolgsmeldungen innerhalb der Anwendung
-```
+Gern kannst du Anpassungen in den soeben erzeugten Mediendaten unter `public/mediaData.tsx` vornehmen.
 
-## Fertig. Deine Anwendung kann nun bereitgestellt werden 🎉
+Insgesamt 7 Farben wurden aus dem Startbild abgeleitet. Die Farbwerte sind als 6-stellige Webfarbe mit einem führenden Zahlenzeichen (#) angegeben. Mit der Website [Colordot](https://color.hailpixel.com/) kannst du eine Farbe deine Wahl aussuchen und jeden einzelnen Farbwert anpassen.
 
-Stoppe die Docker Container mit `docker-compose stop`.
-
----
-
-<br />
-Um die Anwendung als Next.js Applikation zu deployen, starte:
+Wofür die einzelnen Farbwerte stehen, siehst du in der folgenden Liste:
 
 ```
-npm run build
+const primaryColor = '#799160';     // Primärfarbe der Medienstation
+const secondaryColor = '#e0bf96';   // Sekundärfarbe der Medienstation
+const backgroundColor = '#faebd7';  // Hintergrundfarbe der Medienstation
+const textColor = '#341419';        // Textfarbe der Medienstation
+const errorColor = '#f3aa1e';       // Farbe für Fehlermeldungen innerhalb der Medienstation
+const infoColor = '#ab465a';        // Farbe für Infomeldungen innerhalb der Medienstation
+const successColor = '#f3aa1e';     // Farbe für Erfolgsmeldungen innerhalb der Medienstation
 ```
 
-Um die Anwendung als HTML-Webseite zu exportieren, starte:
+Neben den Farbwerten sind ebenfalls alle freigestellten Bilder in den Mediendaten enthalten. Auch hier kannst du gern Anpassen vornehmen.
+
+Wenn du mit Dateipfaden vertraut ist, ist ein Anpassung unter _source_ möglich.
+
+Für jedes Bild sind folgende 5 Elemente hinterlegt:
+
+- _name_ ist der, aus dem Dateinamen abgeleitete, Bildtitel für die Medienstation
+- _source_ ist die technische Pfadangabe zum freigestellten Bild
+- _description_ ist der Beschreibungstext zum Bild für die Darstellung in der Medienstation
+- _link_ bietet die Möglichkeit, eine externe Referenz wie bspw. zum Originaldokument anzugeben
+- _wiki_ bietet die Möglichkeit, eine Verlinkung zu Wikimedia o.ä. anzugeben
+
+All deine Anpassungen werden direkt in der Medienstation angezeigt. Öffne dafür den Link deiner Medienstation [mit diesem Link.](http://localhost:3000/)
+
+## Du bist fertig. Deine Medienstation kann nun bereitgestellt werden 🎉
+
+Super! Deine Medienstation ist fertig und du kannst sie [hier ansehen.](http://localhost:3000/)
+Um die Medienstation mit anderen zu teilen kannst du sie exportieren.
+
+Dafür nutzt du erneut _Docker_ mit folgendem Aufruf:
 
 ```
-npm run export
+docker exec -d plantala-app npm run build
 ```
+
+Deine Medienstation wird in 2 Varianten für dich exportiert:
+
+1. Als Node.js unterstützte Produktionsanwendung im Ordner `.next` für deinen eigenen Server.
+
+2. Als statisches HTML im Ordner `out`, welches eigenständig (ohne Node.js-Server) ausgeführt werden kann.
+
+Bist du mit allen Anpassungen deiner Medienstation zufrieden und hast sie erfolgreich exportiert, kannst du die _Docker_ Container mit folgendem Aufruf stoppen:
+
+```
+docker-compose stop
+```
+
+Und nun viel Spaß mit deiner Medienstation.

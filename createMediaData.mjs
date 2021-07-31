@@ -5,8 +5,8 @@ const imageDirectory = 'public/images';
 
 async function getColors () {
   try {
-    const mainImage = `${imageDirectory}/main.png`;
-    const vibrantData = await Vibrant.from(mainImage)
+    const startImage = `${imageDirectory}/start.png`;
+    const vibrantData = await Vibrant.from(startImage)
     .quality(1)
     .getPalette();
 

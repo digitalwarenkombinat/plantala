@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "media-data": "node createMediaData.mjs",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"

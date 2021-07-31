@@ -19,3 +19,6 @@ yarn-error.log*
 
 # Input Images
 /public/images/input/*
+
+# export
+/out

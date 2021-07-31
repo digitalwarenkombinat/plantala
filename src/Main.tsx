@@ -7,7 +7,7 @@ const hasMediaData = mediaData.images.length > 1;
 const mediaItemPath = hasMediaData ? '' : 'plants/';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  main: {
+  start: {
     boxShadow: 'none',
     height: '25em',
     [theme.breakpoints.up('sm')]: {
@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: '32em',
     },
   },
-  mainImage: {
+  startImage: {
     backgroundColor: theme.palette.background.default,
-    backgroundImage: `url('/images/${mediaItemPath}main.png')`,
+    backgroundImage: `url('/images/${mediaItemPath}start.png')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: 'center center',
@@ -32,8 +32,8 @@ export default function Main() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.main}>
-      <div className={classes.mainImage} />
+    <Paper className={classes.start}>
+      <div className={classes.startImage} />
     </Paper>
   );
 }
