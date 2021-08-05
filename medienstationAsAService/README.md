@@ -6,7 +6,7 @@ Die _Medienstation as a Service_ (MaaS) bietet dir eine einfache Möglichkeit, d
 
 - in nur 3 Schritten zur eigenen Medienstation
 - automatisierter Bilderimport und Entfernen der Bildhintergründe
-- unterstützter Bearbeitungsmodus der Daten
+- unterstützter Bearbeitungsmodus der Daten und Hinzufügen von Hintergrundinformationen
 - Farben werden anhand deines Startbildes analysiert
 - Farbschema der Medienstation frei wählbar
 - spielerisch ästhetische Wissensvermittlung mit deinen Daten
@@ -19,7 +19,7 @@ Im Folgenden zeigen wir dir, wie du deine eigene Medienstation erstellst.
 
 - Kopiere deine Bilder in der Ordner `public/images/input` und entwirf ein Logo `public/images/logo.png` sowie ein Startbild `public/images/start.png`
 - Starte die Medienstation mit `docker-compose up -d --build`
-- Erzeuge die Mediendaten mit `docker exec -d plantala-app npm run media-data` und bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Medienstation in `public/mediaData.tsx`
+- Erzeuge die Mediendaten mit `docker exec -d plantala-app npm run media-data` und bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Medienstation in `public/mediaData.js`
 
 <br />
 
@@ -62,7 +62,7 @@ Zum Starten der Medienstation wird eine Anwendung namens _Docker_ verwendet. Ver
 
 _Docker_ installiert beim Starten automatisch alle benötigten Bibliotheken. Du musst auf deinem Computer somit keine weiteren Anwendungen außer _Docker_ installieren. Für die Installation klicke auf [Docker installieren](https://docs.docker.com/get-docker/) und wähle dein Betriebssystem aus.
 
-Nach abgeschlossener Installation kannst du deine Medienstation mit folgendem Aufruf starten:
+Nach abgeschlossener Installation kannst du deine Medienstation mit folgendem Aufruf im Terminal starten:
 
 ```
 docker-compose up -d --build
@@ -84,7 +84,7 @@ Deine kopierten Bilder wurden alle im Hintergrund freigestellt und befinden sich
 
 Damit die Bilder in der Medienstation erscheinen, aktualisiere die Mediendaten.
 
-Dies geschieht mit dem Aufruf:
+Dies geschieht mit dem Terminalaufruf:
 
 ```
 docker exec -d plantala-app npm run media-data
@@ -94,7 +94,7 @@ docker exec -d plantala-app npm run media-data
 
 All deine Bilder werden nun in der Medienstation angezeigt. Weiterhin ist dein Logo und dein Startbild zu sehen. Dieses Startbild hat auch dafür gesorgt, dass sich das Farbschema der Medienstation verändert hat. Die bedeutendsten Farben aus dem Startbild werden nun als Primär- & Sekundärfarbe verwendet.
 
-Gern kannst du Anpassungen in den soeben erzeugten Mediendaten unter `public/mediaData.tsx` vornehmen.
+Gern kannst du Anpassungen in den soeben erzeugten Mediendaten unter `public/mediaData.js` vornehmen.
 
 Insgesamt 7 Farben wurden aus dem Startbild abgeleitet. Die Farbwerte sind als 6-stellige Webfarbe mit einem führenden Zahlenzeichen (#) angegeben. Mit der Website [Colordot](https://color.hailpixel.com/) kannst du eine Farbe deine Wahl aussuchen und jeden einzelnen Farbwert anpassen.
 

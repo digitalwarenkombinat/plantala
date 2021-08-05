@@ -50,12 +50,12 @@ async function getImages () {
 
 export async function createData() {
   const mediaData = {};
-
+  mediaData.isMaaS = true;
   mediaData.colors = await getColors();
   mediaData.images = await getImages();
 
   const mediaDataFile = `export const mediaData = ${JSON.stringify(mediaData, null, 2)};`;
-  const mediaDataFilePath = 'public/mediaData.tsx';
+  const mediaDataFilePath = 'public/mediaData.js';
   await fs.writeFile(mediaDataFilePath, mediaDataFile, 'utf-8');
 }
 
