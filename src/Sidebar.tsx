@@ -1,85 +1,24 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import { mediaData } from '../public/mediaData';
-
 const main = {
   title: 'Malen! ',
   description: 'Mandalas als ästhetischer und spielerischer Einstieg in die Pflanzenkunde',
 };
-
-const hasMediaData = mediaData.images.length > 1;
-const mediaItemPath = hasMediaData ? '' : 'plants/';
-const mediaItems = hasMediaData
-? mediaData
-: {
-      images: [
-        {
-          name: 'Kelchsaum der Erdnusspflanze',
-          source: 'Arachis_hypogaea_Linné_Erdnuss_Ausschnitt.png',
-          description: 'ursprünglich aus den Anden; die ältesten Funde sind 5000 Jahre alt',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_461334/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Erdnuss',
-        },
-        {
-          name: 'Samen des Kretischen Tragant',
-          source: 'Astragalus_creticus_Lam. _Cretischer_Traganthstrauch_Ausschnitt.png',
-          description: 'wächst auf Kreta; bildet dornige Polster',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_459303/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Tragant',
-        },
-        {
-          name: 'Ähren des Bambusrohrs',
-          source: 'Bambusa_arundinacea_Willd. _Gemeines_Bambusrohr_Ausschnitt.png',
-          description: 'wächst vor allem in den (Sub-)Tropen vor; 150 Arten weltweit',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_463210/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Bambusa',
-        },
-        {
-          name: 'Frucht des Karitébaums',
-          source:
-            'Butyrospermum_Parkii_Kotschy,_Illipe_latifolia_Engler_Afrikanischer_Butterbaum,_Mahwabaum_Ausschnitt.png',
-          description: 'kommt in den Savannen südlich der Sahara vor; Früchte sind Quelle für Sheabutter',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_461349/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Karit%C3%A9baum',
-        },
-        {
-          name: 'Blütenboden der Kautschukliane',
-          source: 'Landolphia_comorensis,_var._florida_K._Schumann _Schönblühende_Kautschukliane_Teil3_Ausschnitt.png',
-          description: 'verbreitet in den Tropen Afrikas und Madagaskars; verletzte Rinde sondert Kautschuk ab',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_461359/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Rauvolfioideae',
-        },
-        {
-          name: 'Blumenkrone des Spanischen Pfeffers',
-          source: 'Capsicum_longum_DC._Spanischer_Pfeffer_I_Ausschnitt.png',
-          description: 'stammt aus Mittel- und Südamerika; Pepperoni, Chili und Paprika gehören zu dieser Art',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_459298/1/-/',
-          wiki: 'https://de.wikipedia.org/wiki/Spanischer_Pfeffer',
-        },
-        {
-          name: 'Papayafrucht',
-          source: 'Carica_Papaya_Linné_Melonenbaum_Ausschnitt.png',
-          description: 'kommt in Süd- und Mittelamerika vor; Samen wurden früher zur Entwurmung eingesetzt',
-          link: 'https://sammlungen.uni-goettingen.de/objekt/record_naniweb_461346/1/',
-          wiki: 'https://de.wikipedia.org/wiki/Papaya',
-        },
-      ],
-    };
 
 const avatarCount = 5;
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
     position: 'relative',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
     marginBottom: theme.spacing(2),
   },
@@ -110,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function Sidebar() {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <Paper className={classes.main}>
@@ -129,12 +69,12 @@ export default function Sidebar() {
         </Grid>
       </Grid>
       <Grid container direction="column">
-        {mediaItems.images.slice(0, avatarCount).map((plant) => (
+        {theme.mediaDataImages.slice(0, avatarCount).map((plant) => (
           <Grid key={plant.name} item container alignItems="center">
             <Avatar
               key={plant.name}
               alt={plant.name}
-              src={`/images/${mediaItemPath}${plant.source}`}
+              src={`/images/${theme.mediaDataPath}${plant.source}`}
               className={classes.plantAvatar}
             />
             <Typography variant="h6" gutterBottom>

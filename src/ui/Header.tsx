@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
@@ -10,11 +10,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Divider, ListItemIcon } from '@material-ui/core';
 import Fade from '@material-ui/core/Fade';
-
-import { mediaData } from '../../public/mediaData' ;
-
-const hasMediaData = mediaData.images.length > 1;
-const mediaItemPath = hasMediaData ? '' : 'plants/';
 
 const useStyles = makeStyles((theme: Theme) => ({
   toolbarMargin: {
@@ -40,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -55,7 +51,7 @@ export default function Header() {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <img alt="Plantala logo" src={`/images/${mediaItemPath}logo.png`} className={classes.logo} />
+          <img alt="Plantala logo" src={`/images/${theme.mediaDataPath}logo.png`} className={classes.logo} />
           <Typography className={classes.title} variant="h2">
             Plantala
           </Typography>

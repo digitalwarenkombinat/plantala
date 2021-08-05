@@ -2,11 +2,22 @@ import { blue } from '@material-ui/core/colors';
 import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { mediaData } from '../public/mediaData' ;
 
-declare module '@material-ui/core/styles/createPalette' {
-  export interface PaletteOptions {
-    plantala: {
-      main: string;
-    };
+interface IMediaDataImages {
+  name: string
+  source: string
+  description: string
+  link: string
+  wiki: string
+}
+
+declare module '@material-ui/core/styles/createTheme' {
+  interface Theme {
+    mediaDataImages: IMediaDataImages[]
+    mediaDataPath: string
+  }
+  interface ThemeOptions {
+    mediaDataImages?: IMediaDataImages[]
+    mediaDataPath?: string
   }
 }
 
@@ -20,32 +31,30 @@ const successColor = mediaData.colors.successColor || '#f3aa1e';
 
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
+  mediaDataImages: mediaData.images,
+  mediaDataPath: mediaData.isMaaS ? '' : 'plants/',
   palette: {
     primary: {
-      main: primaryColor,
+      main: primaryColor
     },
     secondary: {
-      main: secondaryColor,
+      main: secondaryColor
     },
     background: {
-      default: backgroundColor,
-      paper: '#e0bf96',
+      default: backgroundColor
     },
     text: {
-      primary: textColor,
+      primary: textColor
     },
     error: {
-      main: errorColor,
+      main: errorColor
     },
     info: {
-      main: infoColor,
+      main: infoColor
     },
     success: {
-      main: successColor,
-    },
-    plantala: {
-      main: '#e0bf96',
-    },
+      main: successColor
+    }
   },
   typography: {
     button: {
