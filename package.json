@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.11.2",
     "clsx": "latest",
     "fs-extra": "^10.0.0",
+    "manifesto.js": "^4.2.4",
     "next": "latest",
     "node-vibrant": "^3.2.1-alpha.1",
     "prop-types": "latest",
@@ -17,13 +18,17 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
+    "lint": "next lint",
     "media-data": "node createMediaData.mjs",
+    "process-iiif": "node processIIIF.mjs",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.4.5",
     "@types/react": "^17.0.15",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.0.1",
     "typescript": "^4.3.5"
   }
 }

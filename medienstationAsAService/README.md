@@ -110,13 +110,13 @@ const infoColor = '#ab465a';        // Farbe für Infomeldungen innerhalb der Me
 const successColor = '#f3aa1e';     // Farbe für Erfolgsmeldungen innerhalb der Medienstation
 ```
 
-Neben den Farbwerten sind ebenfalls alle freigestellten Bilder in den Mediendaten enthalten. Auch hier kannst du gern Anpassen vornehmen.
+Neben den Farbwerten sind ebenfalls alle freigestellten Bilder in den Mediendaten enthalten. Auch hier kannst du gern Anpassungen vornehmen.
 
 Wenn du mit Dateipfaden vertraut ist, ist ein Anpassung unter _source_ möglich.
 
 Für jedes Bild sind folgende 5 Elemente hinterlegt:
 
-- _name_ ist der, aus dem Dateinamen abgeleitete, Bildtitel für die Medienstation
+- _name_ ist der aus dem Dateinamen abgeleitete Bildtitel für die Medienstation
 - _source_ ist die technische Pfadangabe zum freigestellten Bild
 - _description_ ist der Beschreibungstext zum Bild für die Darstellung in der Medienstation
 - _link_ bietet die Möglichkeit, eine externe Referenz wie bspw. zum Originaldokument anzugeben

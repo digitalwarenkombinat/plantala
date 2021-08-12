@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../src/theme';
+import theme from '../components/theme';
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
+export default function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page)
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
+    // eslint-disable-next-line no-undef
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
@@ -24,7 +25,7 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </React.Fragment>
   );

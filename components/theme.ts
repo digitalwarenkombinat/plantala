@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { blue } from '@material-ui/core/colors';
 import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { mediaData } from '../public/mediaData' ;
