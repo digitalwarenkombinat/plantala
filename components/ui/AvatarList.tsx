@@ -2,9 +2,9 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
-const avatarCount = 5;
+import useStore from "../store";
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -26,26 +26,32 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function Header() {
+export default function AvatarList() {
   const classes = useStyles();
-  const theme = useTheme();
-
+  const { avatarCount, getSelectedMedia, mediaPath } = useStore();
+  const numberOfEmptyItems = avatarCount - getSelectedMedia().length;
+  
   return (
     <Paper square className={classes.main} >
       <Grid container direction="column">
-        {theme.mediaDataImages.slice(0, avatarCount).map((plant) => (
+        {getSelectedMedia().map((plant) => (
           <Grid key={plant.name} item container alignItems="center">
             <Avatar
               key={plant.name}
               alt={plant.name}
-              src={`/images/${theme.mediaDataPath}${plant.source}`}
+              src={`/images/${mediaPath}${plant.source}`}
               className={classes.plantAvatar}
-            />
+              />
             <Typography variant="h6" gutterBottom>
               {plant.name}
             </Typography>
           </Grid>
         ))}
+        {[...Array(numberOfEmptyItems).keys()].map((index) => (
+        <Grid key={index} item container alignItems="center">
+          <Avatar src={`/images/${mediaPath}logo.png`} className={classes.plantAvatar}/>
+          <Typography variant="h6" gutterBottom>Wähle deine nächste Pflanze ...</Typography>
+        </Grid>))}
       </Grid>
     </Paper>
   );

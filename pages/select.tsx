@@ -1,14 +1,22 @@
-import React from 'react';
+import dynamic from 'next/dynamic'
 import Layout from '../components/Layout'
-import AvatarList from '../components/ui/AvatarList'
-import ItemList from '../components/ui/ItemList';
 import SelectFab from '../components/ui/SelectFab'
+
+const DynamicAvatarList = dynamic(
+  () => import('../components/ui/AvatarList'),
+  { ssr: false }
+)
+
+const DynamicItemList = dynamic(
+  () => import('../components/ui/ItemList'),
+  { ssr: false }
+)
 
 export default function Select() {
   return (
     <>
-      <AvatarList />
-      <ItemList />
+      <DynamicAvatarList />
+      <DynamicItemList />
       <SelectFab />
     </>
   );

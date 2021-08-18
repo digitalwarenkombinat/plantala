@@ -1,13 +1,17 @@
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
+import useStore from "../store";
+
+const mediaPath = useStore.getState().mediaPath;
+
 const useStyles = makeStyles((theme: Theme) => ({
   start: {
     boxShadow: 'none',
   },
   startImage: {
     backgroundColor: theme.palette.secondary.main,
-    backgroundImage: `url('/images/${theme.mediaDataPath}start.png')`,
+    backgroundImage: `url('/images/${mediaPath}start.png')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: 'center center',
