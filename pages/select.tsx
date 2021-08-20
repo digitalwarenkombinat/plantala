@@ -1,16 +1,11 @@
-import dynamic from 'next/dynamic'
-import Layout from '../components/Layout'
-import SelectFab from '../components/ui/SelectFab'
+import dynamic from 'next/dynamic';
 
-const DynamicAvatarList = dynamic(
-  () => import('../components/ui/AvatarList'),
-  { ssr: false }
-)
+import Layout from '../components/Layout';
+import SelectFab from '../components/ui/SelectFab';
 
-const DynamicItemList = dynamic(
-  () => import('../components/ui/ItemList'),
-  { ssr: false }
-)
+const DynamicAvatarList = dynamic(() => import('../components/ui/AvatarList'), { ssr: false });
+
+const DynamicItemList = dynamic(() => import('../components/ui/ItemList'), { ssr: false });
 
 export default function Select() {
   return (
@@ -22,6 +17,4 @@ export default function Select() {
   );
 }
 
-Select.getLayout = (page) => (
-  <Layout>{page}</Layout>
-)
+Select.getLayout = (page) => <Layout>{page}</Layout>;

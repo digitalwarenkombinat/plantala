@@ -1,8 +1,7 @@
-import React from 'react';
-import Layout from '../components/Layout'
-import StartBanner from '../components/ui/StartBanner'
-import StartImage from '../components/ui/StartImage'
-import StartFab from '../components/ui/StartFab'
+import Layout from '../components/Layout';
+import StartBanner from '../components/ui/StartBanner';
+import StartFab from '../components/ui/StartFab';
+import StartImage from '../components/ui/StartImage';
 
 export default function Index() {
   return (
@@ -14,6 +13,4 @@ export default function Index() {
   );
 }
 
-Index.getLayout = (page) => (
-  <Layout>{page}</Layout>
-)
+Index.getLayout = (page) => <Layout>{page}</Layout>;

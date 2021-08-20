@@ -1,14 +1,10 @@
-import React from 'react';
-import dynamic from 'next/dynamic'
-import Layout from '../components/Layout'
-//import AvatarList from '../components/ui/AvatarList'
-import Mandala from '../components/ui/Mandala'
-import EditFab from '../components/ui/EditFab'
+import dynamic from 'next/dynamic';
 
-const DynamicAvatarList = dynamic(
-  () => import('../components/ui/AvatarList'),
-  { ssr: false }
-)
+import Layout from '../components/Layout';
+import EditFab from '../components/ui/EditFab';
+import Mandala from '../components/ui/Mandala';
+
+const DynamicAvatarList = dynamic(() => import('../components/ui/AvatarList'), { ssr: false });
 
 export default function Edit() {
   return (
@@ -20,6 +16,4 @@ export default function Edit() {
   );
 }
 
-Edit.getLayout = (page) => (
-  <Layout>{page}</Layout>
-);
+Edit.getLayout = (page) => <Layout>{page}</Layout>;

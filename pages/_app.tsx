@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+
 import theme from '../components/theme';
 
 export default function MyApp({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.

@@ -1,8 +1,8 @@
 import { ImageList } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import useStore from '../store';
 import Item from './Item';
-import useStore from "../store";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -15,12 +15,12 @@ const useStyles = makeStyles(() => ({
     flexWrap: 'nowrap',
     transform: 'translateZ(0)',
     hyphens: 'auto',
-  }
+  },
 }));
 
 export default function ItemList() {
   const classes = useStyles();
-  const media = useStore(state => state.media)
+  const media = useStore((state) => state.media);
 
   return (
     <div className={classes.root}>
@@ -32,5 +32,3 @@ export default function ItemList() {
     </div>
   );
 }
-
-

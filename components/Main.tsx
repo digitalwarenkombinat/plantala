@@ -1,8 +1,8 @@
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
+import useStore from './store';
 import ItemList from './ui/ItemList';
-import useStore from "./store";
 
 const mediaPath = useStore.getState().mediaPath;
 
@@ -17,14 +17,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: 'contain',
     backgroundPosition: 'center center',
     height: 0,
-    paddingBottom: "100%",
+    paddingBottom: '100%',
     [theme.breakpoints.up('sm')]: {
-      paddingBottom: "50%",
+      paddingBottom: '50%',
     },
     [theme.breakpoints.up('md')]: {
-      paddingBottom: "33%",
+      paddingBottom: '33%',
     },
-  }
+  },
 }));
 
 export default function Main() {

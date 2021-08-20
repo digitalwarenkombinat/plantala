@@ -1,30 +1,25 @@
-import {useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useCanvas } from './useCanvas';
-import useStore from "../store";
+
+import useStore from '../store';
+import { useCanvas } from '../utils/useCanvas';
 import Share from './Share';
 
 const useStyles = makeStyles(() => ({
   canvas: {
     width: '100%',
-    height: '100%'
-  }
+    height: '100%',
+  },
 }));
 
 const Mandala = () => {
   const classes = useStyles();
-  const { setPlants, canvasRef, canvasWidth, canvasHeight } = useCanvas();
-  const imageMultiplier = 5;
-  const { getSelectedMedia } = useStore();
-
-  useEffect(() => {
-    setPlants(getSelectedMedia());
-  }, [getSelectedMedia, setPlants]);
+  const { canvasRef, canvasWidth, canvasHeight } = useCanvas();
+  const { imageMultiplier } = useStore();
 
   return (
     <Grid container justifyContent="center">
-      <canvas 
+      <canvas
         ref={canvasRef}
         className={classes.canvas}
         width={canvasWidth * imageMultiplier}

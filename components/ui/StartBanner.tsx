@@ -1,17 +1,17 @@
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    position: 'relative',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary,
-  },
-  mainContent: {
-    position: 'relative',
+    alignContent: 'space-around',
+    height: '25vh',
     padding: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      height: 'initial',
+    },
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(3),
       paddingRight: 0,
@@ -21,26 +21,24 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const main = {
   title: 'Malen! Strahlen! Plantala!',
-  description: 'Erstelle individuelle Mandalas aus historischen botanischen Lehrtafeln.',
+  description: 'Erstelle individuelle Mandalas aus historischen Pflanzendarstellungen.',
 };
 
 export default function Header() {
   const classes = useStyles();
 
   return (
-    <Paper square className={classes.main} >
-      <Grid container>
-        <Grid item md={6}>
-          <div className={classes.mainContent}>
-            <Typography variant="h4" gutterBottom>
-              {main.title}
-            </Typography>
-            <Typography variant="h5" paragraph>
-              {main.description}
-            </Typography>
-          </div>
-        </Grid>
+    <Grid container className={classes.main}>
+      <Grid item>
+        <Typography variant="h3" gutterBottom>
+          {main.title}
+        </Typography>
       </Grid>
-    </Paper>
+      <Grid item>
+        <Typography variant="h4" paragraph>
+          {main.description}
+        </Typography>
+      </Grid>
+    </Grid>
   );
 }

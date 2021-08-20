@@ -1,13 +1,13 @@
 import Fab from '@material-ui/core/Fab';
-import EditIcon from '@material-ui/icons/Edit';
+import Replay from '@material-ui/icons/Replay';
 import Link from 'next/link';
 
-export default function SelectFab() {
+export default function ShareFab() {
   return (
     <Link href="/edit" passHref>
       <Fab variant="extended" color="primary">
-        <EditIcon />
-        Bearbeite dein Plantala
+        <Replay />
+        Starte ein neues Plantala
       </Fab>
     </Link>
   );

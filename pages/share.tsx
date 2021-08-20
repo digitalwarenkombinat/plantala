@@ -1,19 +1,16 @@
-import React from 'react';
-import Layout from '../components/Layout'
-import AvatarList from '../components/ui/AvatarList'
+import Layout from '../components/Layout';
+import AvatarList from '../components/ui/AvatarList';
 import ItemList from '../components/ui/ItemList';
-import SelectFab from '../components/ui/SelectFab'
+import ShareFab from '../components/ui/ShareFab';
 
 export default function Share() {
   return (
     <>
       <AvatarList />
       <ItemList />
-      <SelectFab />
+      <ShareFab />
     </>
   );
 }
 
-Share.getLayout = (page) => (
-  <Layout>{page}</Layout>
-)
+Share.getLayout = (page) => <Layout>{page}</Layout>;

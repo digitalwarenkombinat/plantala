@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import { blue } from '@material-ui/core/colors';
 import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import { mediaData } from '../public/mediaData' ;
+
+import { mediaData } from '../public/mediaData';
 
 const primaryColor = mediaData.colors.primaryColor || '#799160';
 const secondaryColor = mediaData.colors.secondaryColor || '#e0bf96';
@@ -15,41 +14,75 @@ const successColor = mediaData.colors.successColor || '#f3aa1e';
 let theme = createTheme({
   palette: {
     primary: {
-      main: primaryColor
+      main: primaryColor,
     },
     secondary: {
-      main: secondaryColor
+      main: secondaryColor,
     },
     background: {
-      default: backgroundColor
+      default: backgroundColor,
     },
     text: {
-      primary: textColor
+      primary: textColor,
     },
     error: {
-      main: errorColor
+      main: errorColor,
     },
     info: {
-      main: infoColor
+      main: infoColor,
     },
     success: {
-      main: successColor
-    }
+      main: successColor,
+    },
   },
   typography: {
     button: {
-      text: blue,
+      text: textColor,
+    },
+    body1: {
+      fontSize: '2rem',
     },
   },
+});
+
+theme = responsiveFontSizes(theme);
+
+theme = {
+  ...theme,
   overrides: {
     MuiButton: {
       contained: {
         backgroundColor: infoColor,
       },
     },
+    MuiAvatar: {
+      root: {
+        cursor: 'pointer',
+        borderWidth: 2,
+        borderStyle: 'solid',
+        margin: 2,
+        height: '2.5rem',
+        width: '2.5rem',
+        borderColor: infoColor,
+        [theme.breakpoints.up('sm')]: {
+          height: '4em',
+          width: '4em',
+        },
+      },
+    },
+    MuiFab: {
+      primary: {
+        position: 'absolute',
+        bottom: 16,
+        right: 16,
+      },
+    },
+    MuiSvgIcon: {
+      root: {
+        marginRight: 8,
+      },
+    },
   },
-});
-
-theme = responsiveFontSizes(theme);
+};
 
 export default theme;
