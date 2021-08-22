@@ -33,8 +33,6 @@ export default function ItemBoard() {
         <Slider
           aria-labelledby="rotation-slider"
           valueLabelDisplay="on"
-          step={30}
-          marks
           max={360}
           value={getActiveElement().rotation || 0}
           onChange={(_event, value) => transformElement('rotation', value)}
@@ -71,8 +69,6 @@ export default function ItemBoard() {
         <Slider
           aria-labelledby="distance-slider"
           valueLabelDisplay="on"
-          step={50}
-          marks
           min={50}
           max={300}
           value={getActiveElement().distance || 50}

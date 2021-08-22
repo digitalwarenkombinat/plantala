@@ -4,8 +4,8 @@ import { persist } from 'zustand/middleware';
 import { mediaData } from '../public/mediaData';
 
 export const AVATAR_COUNT = 5;
-export const ELEMENT_SUFFIX = '.png';
-export const BOARD_SUFFIX = '_Lehrtafel.png';
+export const ELEMENT_SUFFIX = '.webp';
+export const BOARD_SUFFIX = '_Lehrtafel.webp';
 export const VEKTOR_SUFFIX = '_vektor.svg';
 
 function reorderSelectedElement(element: IMedia): IMedia {
@@ -14,6 +14,7 @@ function reorderSelectedElement(element: IMedia): IMedia {
 
 export interface IMedia {
   name: string;
+  shortName: string;
   source: string;
   description?: string;
   link?: string;

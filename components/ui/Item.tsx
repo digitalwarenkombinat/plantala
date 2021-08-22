@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
 import {
   Button,
   Dialog,
   DialogActions,
+  DialogContent,
   DialogTitle,
   IconButton,
   ImageListItem,
@@ -13,8 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX } from '../store';
+import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX, IMedia } from '../store';
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -38,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BoardDialog({ onClose, selectedItem, open }) {
+function BoardDialog({ onClose, selectedItem, open }: { onClose: any; selectedItem: IMedia; open: boolean }) {
   const classes = useStyles();
   const { mediaPath } = useStore();
 
@@ -49,6 +52,7 @@ function BoardDialog({ onClose, selectedItem, open }) {
   return (
     <Dialog onClose={handleClose} aria-labelledby="board-dialog-title" open={open}>
       <DialogTitle id="board-dialog-title">{selectedItem.name}</DialogTitle>
+      <DialogContent>{selectedItem.description}</DialogContent>
       <Image
         alt={selectedItem.name}
         className={classes.boardMedia}
@@ -56,16 +60,33 @@ function BoardDialog({ onClose, selectedItem, open }) {
         width={800}
         height={1000}
       />
+      {/* <img
+        alt={selectedItem.name}
+        className={classes.boardMedia}
+        src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
+        width={800}
+        height={1000}
+      /> */}
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Mehr erfahren
-        </Button>
+        <Link href={selectedItem.wiki} passHref={true}>
+          <a target="_blank">
+            <Image alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} />
+            {/* <img alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} /> */}
+          </a>
+        </Link>
+        <Link href={selectedItem.link} passHref={true}>
+          <a target="_blank">
+            <Button onClick={handleClose} color="primary">
+              Erfahre noch mehr über diese Lehrtafel
+            </Button>
+          </a>
+        </Link>
       </DialogActions>
     </Dialog>
   );
 }
 
-export default function Item({ item }) {
+export default function Item({ item }: { item: IMedia }) {
   const classes = useStyles();
   const mediaPath = useStore((state) => state.mediaPath);
   const selectElement = useStore((state) => state.selectElement);
@@ -91,9 +112,14 @@ export default function Item({ item }) {
           height={400}
           onClick={handleClickOpen}
         />
+        {/* <img
+          alt={item.name}
+          className={classes.itemMedia}
+          src={`/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
+          onClick={handleClickOpen}
+        /> */}
         <ImageListItemBar
-          title={item.name}
-          subtitle={item.description}
+          title={item.shortName}
           position="top"
           classes={{
             root: classes.titleBar,
@@ -101,7 +127,7 @@ export default function Item({ item }) {
           }}
           actionIcon={
             <IconButton
-              aria-label={`Herz ${item.name}`}
+              aria-label={`Herz ${item.shortName}`}
               onClick={() => (item.selected ? deselectElement(item) : selectElement(item))}
             >
               {item.selected ? (
@@ -113,7 +139,7 @@ export default function Item({ item }) {
           }
           actionPosition="left"
         />
-        <ImageListItemBar position="bottom" title="Klicke auf das Bild um die Lehrtafel zu sehen" />
+        <ImageListItemBar position="bottom" title="Klicke auf die Pflanze um mehr zu erfahren" />
       </ImageListItem>
       <BoardDialog selectedItem={item} open={open} onClose={handleClose} />
     </>

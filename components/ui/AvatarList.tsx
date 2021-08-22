@@ -57,7 +57,7 @@ export default function AvatarList() {
               onClick={() => activateElement(element)}
             />
             <Typography variant="h6" gutterBottom>
-              {element.name}
+              {element.shortName}
             </Typography>
           </Grid>
         ))}
