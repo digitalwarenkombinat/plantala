@@ -5,16 +5,16 @@ const imageMultiplier = useStore.getState().imageMultiplier;
 export const canvasWidth = 800;
 export const canvasHeight = 800;
 
-export function setImageValues(plant: IMedia) {
-  const { amount = 4 + plant.order * 2, rotation = 0, scale = 1, level = 0, size = 100 * imageMultiplier } = plant;
+export function setImageValues(element: IMedia) {
+  const { amount = 4 + element.order * 2, rotation = 0, scale = 1, size = 100 * imageMultiplier } = element;
 
-  const distance: number = getLayerDistance(plant.distance, plant.order);
+  const distance: number = getLayerDistance(element.distance, element.order);
   const step: number = Math.ceil(360 / amount);
 
-  return { amount, distance, rotation, step, scale, level, size };
+  return { amount, distance, rotation, step, scale, size };
 }
 
-export function getLayerDistance(distance = 50, order: number) {
+export function getLayerDistance(distance = 75, order: number) {
   return distance * order * imageMultiplier;
 }
 

@@ -3,6 +3,15 @@ import { persist } from 'zustand/middleware';
 
 import { mediaData } from '../public/mediaData';
 
+export const AVATAR_COUNT = 5;
+export const ELEMENT_SUFFIX = '.png';
+export const BOARD_SUFFIX = '_Lehrtafel.png';
+export const VEKTOR_SUFFIX = '_vektor.svg';
+
+function reorderSelectedElement(element: IMedia): IMedia {
+  return element.selected ? { ...element, order: element.order === 1 ? 1 : element.order - 1 } : element;
+}
+
 export interface IMedia {
   name: string;
   source: string;
@@ -22,10 +31,11 @@ export interface IMedia {
 type Store = {
   media: IMedia[];
   mediaPath: string;
-  avatarCount: number;
   imageMultiplier: number;
+  colorMode: boolean;
   getSelectedElements: () => IMedia[];
   selectElement: (element: IMedia) => void;
+  deselectElement: (element: IMedia) => void;
   getActiveElement: () => IMedia;
   activateElement: (element: IMedia) => void;
   transformElement: (transformName: string, value: number | number[]) => void;
@@ -37,10 +47,13 @@ const useStore = create<Store>(
     (set: SetState<Store>, get: GetState<Store>) => ({
       mediaPath: mediaData.isMaaS ? '' : 'plants/',
       media: mediaData.images,
-      avatarCount: 5,
       imageMultiplier: 1,
+      colorMode: true,
 
-      getSelectedElements: () => get().media.filter((media) => media.selected === true),
+      getSelectedElements: () =>
+        get()
+          .media.filter((media) => media.selected === true)
+          .sort((e1, e2) => e1.order - e2.order),
 
       selectElement: (element: IMedia): void =>
         set((state) => ({
@@ -50,8 +63,22 @@ const useStore = create<Store>(
             }
             return {
               ...item,
-              selected: !item.selected,
-              order: state.media.filter((media) => media.selected === true).length,
+              selected: true,
+              order: get().getSelectedElements().length + 1,
+            };
+          }),
+        })),
+
+      deselectElement: (element: IMedia): void =>
+        set((state) => ({
+          media: state.media.map((item) => {
+            if (item.name !== element.name) {
+              return reorderSelectedElement(item);
+            }
+            return {
+              ...item,
+              selected: false,
+              order: 0,
             };
           }),
         })),

@@ -1,13 +1,11 @@
 import Layout from '../components/Layout';
-import AvatarList from '../components/ui/AvatarList';
-import ItemList from '../components/ui/ItemList';
 import ShareFab from '../components/ui/ShareFab';
+import ShareImage from '../components/ui/ShareImage';
 
 export default function Share() {
   return (
     <>
-      <AvatarList />
-      <ItemList />
+      <ShareImage />
       <ShareFab />
     </>
   );

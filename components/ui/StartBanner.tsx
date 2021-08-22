@@ -6,11 +6,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary,
-    alignContent: 'space-around',
     height: '25vh',
     padding: theme.spacing(1),
     [theme.breakpoints.up('sm')]: {
       height: 'initial',
+      flexDirection: 'column',
     },
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(3),

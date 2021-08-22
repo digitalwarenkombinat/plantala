@@ -65,8 +65,8 @@ theme = {
         width: '2.5rem',
         borderColor: infoColor,
         [theme.breakpoints.up('sm')]: {
-          height: '4em',
-          width: '4em',
+          height: '3em',
+          width: '3em',
         },
       },
     },

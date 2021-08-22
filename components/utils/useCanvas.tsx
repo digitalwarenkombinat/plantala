@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-import useStore, { IMedia } from '../store';
+import useStore, { ELEMENT_SUFFIX, IMedia, VEKTOR_SUFFIX } from '../store';
 import { calculateImageCoordinates, calculateImageRotation, canvasHeight, canvasWidth, setImageValues } from './Utils';
 
 function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
   const mediaPath = useStore.getState().mediaPath;
+  const colorMode = useStore.getState().colorMode;
   const { amount, distance, rotation, step, scale, size } = setImageValues(element);
+  const colorPath = colorMode ? ELEMENT_SUFFIX : VEKTOR_SUFFIX;
 
   for (let imageNumber = 0; imageNumber < amount; imageNumber++) {
     const { imageX, imageY } = calculateImageCoordinates(imageNumber, amount, distance);
@@ -23,13 +25,13 @@ function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
       // context.strokeRect(-size / 2, -size / 2, size, size);
     };
 
-    image.src = `/images/${mediaPath}${element.source}`;
+    image.src = `/images/${mediaPath}${element.source}${colorPath}`;
   }
 }
 
 export function useCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { getSelectedElements, media, imageMultiplier } = useStore();
+  const { colorMode, getSelectedElements, imageMultiplier, media } = useStore();
 
   useEffect(() => {
     if (media.length > 0 && canvasRef.current) {
@@ -47,7 +49,7 @@ export function useCanvas() {
         });
       }
     }
-  }, [media, getSelectedElements, imageMultiplier]);
+  }, [colorMode, getSelectedElements, imageMultiplier, media]);
 
   return { canvasRef, canvasWidth, canvasHeight };
 }

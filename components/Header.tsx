@@ -14,7 +14,7 @@ export default function Header() {
       <Toolbar>
         <Link href="/" passHref>
           <div>
-            <Image alt="Plantala Logo" src={`/images/${mediaPath}logo.png`} width={40} height={40} />
+            <Image alt="Plantala Logo" src={`/images/${mediaPath}logo.svg`} width={60} height={60} />
           </div>
         </Link>
         <Typography variant="h2">Plantala</Typography>

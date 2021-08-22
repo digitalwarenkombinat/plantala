@@ -1,7 +1,7 @@
 import { Avatar, Grid, Slider, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import useStore from '../store';
+import useStore, { ELEMENT_SUFFIX } from '../store';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +23,7 @@ export default function ItemBoard() {
         <Avatar
           key={getActiveElement().name}
           alt={getActiveElement().name}
-          src={`/images/${mediaPath}${getActiveElement().source}`}
+          src={`/images/${mediaPath}${getActiveElement().source}${ELEMENT_SUFFIX}`}
         />
       </Grid>
       <Grid item>

@@ -7,7 +7,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Typography from '@material-ui/core/Typography';
 
-import useStore from '../store';
+import useStore, { AVATAR_COUNT, ELEMENT_SUFFIX } from '../store';
 import ItemBoard from './ItemBoard';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -15,13 +15,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary,
+    paddingLeft: theme.spacing(4),
+  },
+  empty: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    cursor: 'initial',
   },
 }));
 
 export default function AvatarList() {
   const classes = useStyles();
-  const { avatarCount, getSelectedElements, mediaPath } = useStore();
-  const numberOfEmptyItems = avatarCount - getSelectedElements().length;
+  const { getSelectedElements, mediaPath } = useStore();
+  const numberOfEmptyItems = AVATAR_COUNT - getSelectedElements().length;
   const [isOpen, setOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -48,7 +53,7 @@ export default function AvatarList() {
             <Avatar
               key={element.name}
               alt={element.name}
-              src={`/images/${mediaPath}${element.source}`}
+              src={`/images/${mediaPath}${element.source}${ELEMENT_SUFFIX}`}
               onClick={() => activateElement(element)}
             />
             <Typography variant="h6" gutterBottom>
@@ -58,7 +63,7 @@ export default function AvatarList() {
         ))}
         {[...Array(numberOfEmptyItems).keys()].map((index) => (
           <Grid key={index} item container alignItems="center">
-            <Avatar src={`/images/${mediaPath}logo.png`} />
+            <Avatar src={`/images/${mediaPath}empty.svg`} className={classes.empty} />
             <Typography variant="h6" gutterBottom>
               Wähle deine nächste Pflanze ...
             </Typography>

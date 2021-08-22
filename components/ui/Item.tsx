@@ -14,7 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Image from 'next/image';
 
-import useStore from '../store';
+import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX } from '../store';
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 function BoardDialog({ onClose, selectedItem, open }) {
   const classes = useStyles();
+  const { mediaPath } = useStore();
 
   const handleClose = () => {
     onClose();
@@ -51,9 +52,9 @@ function BoardDialog({ onClose, selectedItem, open }) {
       <Image
         alt={selectedItem.name}
         className={classes.boardMedia}
-        src={`/images/${selectedItem.source}`}
-        width={500}
-        height={500}
+        src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
+        width={800}
+        height={1000}
       />
       <DialogActions>
         <Button onClick={handleClose} color="primary">
@@ -68,6 +69,7 @@ export default function Item({ item }) {
   const classes = useStyles();
   const mediaPath = useStore((state) => state.mediaPath);
   const selectElement = useStore((state) => state.selectElement);
+  const deselectElement = useStore((state) => state.deselectElement);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -84,7 +86,7 @@ export default function Item({ item }) {
         <Image
           alt={item.name}
           className={classes.itemMedia}
-          src={`/images/${mediaPath}${item.source}`}
+          src={`/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
           width={400}
           height={400}
           onClick={handleClickOpen}
@@ -98,7 +100,10 @@ export default function Item({ item }) {
             title: classes.title,
           }}
           actionIcon={
-            <IconButton aria-label={`Herz ${item.name}`} onClick={() => selectElement(item)}>
+            <IconButton
+              aria-label={`Herz ${item.name}`}
+              onClick={() => (item.selected ? deselectElement(item) : selectElement(item))}
+            >
               {item.selected ? (
                 <FavoriteIcon className={classes.title} />
               ) : (

@@ -14,6 +14,7 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-to-print": "^2.13.0",
     "zustand": "^3.5.7"
   },
   "scripts": {

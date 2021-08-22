@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 export default function ShareFab() {
   return (
-    <Link href="/edit" passHref>
+    <Link href="/" passHref>
       <Fab variant="extended" color="primary">
         <Replay />
-        Starte ein neues Plantala
+        Noch mal ganz von vorn
       </Fab>
     </Link>
   );
