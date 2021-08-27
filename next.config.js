@@ -1,5 +1,6 @@
-const isProd = process.env.NODE_ENV === 'production'
+const ghPages = process.env.DEPLOY_TARGET === 'gh-pages';
 
 module.exports = {
-  // Use the prefix in production and not development.
-  assetPrefix: isProd ? '/plantala/' : ''}
+  assetPrefix: ghPages ? '/digitalwarenkombinat.github.io/plantala' : '',
+  basePath: '/plantala',
+};
