@@ -1,12 +1,12 @@
 import { PureComponent } from 'react';
 
-import AvatarList from './AvatarList';
+import Mandala from './Mandala';
 
 export class MandalaPrint extends PureComponent {
   render() {
     return (
       <>
-        <AvatarList />
+        <Mandala />
       </>
     );
   }

@@ -1,33 +1,30 @@
 import { useRef } from 'react';
 
 import { Button, Grid } from '@material-ui/core';
-import { saveAs } from 'file-saver';
 import { useReactToPrint } from 'react-to-print';
 
 import { MandalaPrint } from './MandalaPrint';
 
-// async function shareCanvas() {
-//   const canvasElement = useStore.getState().canvas;
-//   const dataUrl = canvasElement.toDataURL();
-//   const blob = await (await fetch(dataUrl)).blob();
-//   const filesArray = [
-//     new File([blob], `Plantala${new Date().getTime()}.png`, {
-//       type: blob.type,
-//       lastModified: new Date().getTime(),
-//     }),
-//   ];
-//   const shareData = {
-//     files: filesArray,
-//   };
-//   navigator.share(shareData);
-// }
-
-async function downloadCanvas() {
-  //   const blob = await (await fetch(useStore.getState().canvas)).blob();
-  const blob = '';
-  if (blob) {
-    saveAs(blob, 'plantala.png');
+async function shareCanvas() {
+  const canvasElement = document.getElementById('plantalaCanvas') as HTMLCanvasElement;
+  const dataUrl = canvasElement.toDataURL();
+  const blob = await (await fetch(dataUrl)).blob();
+  const filesArray = [
+    new File([blob], `Plantala_${new Date().getTime()}.png`, {
+      type: blob.type,
+      lastModified: new Date().getTime(),
+    }),
+  ];
+  const shareData = {
+    files: filesArray,
+  };
+  if (navigator.share) {
+    navigator
+      .share(shareData)
+      .then(() => alert('success'))
+      .catch((error) => alert(error));
   }
+  alert('not supported');
 }
 
 const ShareButtons = () => {
@@ -43,8 +40,8 @@ const ShareButtons = () => {
       </div>
       <Grid container spacing={2} justifyContent="center">
         <Grid item>
-          <Button variant="contained" color="secondary" onClick={() => downloadCanvas()}>
-            Download
+          <Button variant="contained" color="secondary" onClick={() => shareCanvas()}>
+            Teilen
           </Button>
         </Grid>
         <Grid item>

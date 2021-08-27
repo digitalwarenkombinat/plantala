@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export default function StartFab() {
   return (
-    <Link href="/select" passHref>
-      <Fab variant="extended" color="primary">
+    <Link href="/select" passHref as={process.env.BACKEND_URL + '/'}>
+      <Fab variant="extended" color="primary" aria-label="add">
         <AddIcon />
         Erstelle dein Plantala
       </Fab>

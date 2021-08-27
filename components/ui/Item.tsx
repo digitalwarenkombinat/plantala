@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
 import {
@@ -14,7 +13,6 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX, IMedia } from '../store';
@@ -38,10 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
   boardMedia: {
     padding: 2,
+    width: '100%',
+    maxHeight: '70vh',
   },
 }));
 
-function BoardDialog({ onClose, selectedItem, open }: { onClose: any; selectedItem: IMedia; open: boolean }) {
+function BoardDialog({ onClose, selectedItem, open }: { onClose: () => void; selectedItem: IMedia; open: boolean }) {
   const classes = useStyles();
   const { mediaPath } = useStore();
 
@@ -53,25 +53,17 @@ function BoardDialog({ onClose, selectedItem, open }: { onClose: any; selectedIt
     <Dialog onClose={handleClose} aria-labelledby="board-dialog-title" open={open}>
       <DialogTitle id="board-dialog-title">{selectedItem.name}</DialogTitle>
       <DialogContent>{selectedItem.description}</DialogContent>
-      <Image
+      <img
         alt={selectedItem.name}
         className={classes.boardMedia}
         src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
         width={800}
         height={1000}
       />
-      {/* <img
-        alt={selectedItem.name}
-        className={classes.boardMedia}
-        src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
-        width={800}
-        height={1000}
-      /> */}
       <DialogActions>
-        <Link href={selectedItem.wiki} passHref={true}>
+        <Link href={selectedItem.wiki} passHref={true} as={process.env.BACKEND_URL + '/'}>
           <a target="_blank">
-            <Image alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} />
-            {/* <img alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} /> */}
+            <img alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} />
           </a>
         </Link>
         <Link href={selectedItem.link} passHref={true}>
@@ -104,20 +96,12 @@ export default function Item({ item }: { item: IMedia }) {
   return (
     <>
       <ImageListItem className={classes.item}>
-        <Image
+        <img
           alt={item.name}
           className={classes.itemMedia}
           src={`/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
-          width={400}
-          height={400}
           onClick={handleClickOpen}
         />
-        {/* <img
-          alt={item.name}
-          className={classes.itemMedia}
-          src={`/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
-          onClick={handleClickOpen}
-        /> */}
         <ImageListItemBar
           title={item.shortName}
           position="top"

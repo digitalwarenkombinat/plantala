@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: 'none',
   },
   startImage: {
+    backgroundColor: theme.palette.secondary.main,
     backgroundImage: `url('/images/${mediaPath}start.webp')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',

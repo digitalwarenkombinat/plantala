@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export default function ShareFab() {
   return (
-    <Link href="/" passHref>
-      <Fab variant="extended" color="primary">
+    <Link href="/" passHref as={process.env.BACKEND_URL + '/'}>
+      <Fab variant="extended" color="primary" aria-label="replay">
         <Replay />
         Noch mal ganz von vorn
       </Fab>

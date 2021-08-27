@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function AvatarList() {
   const classes = useStyles();
   const { getSelectedElements, mediaPath } = useStore();
-  const numberOfEmptyItems = AVATAR_COUNT - getSelectedElements().length;
+  const numberOfEmptyItems = Math.max(0, AVATAR_COUNT - getSelectedElements().length);
   const [isOpen, setOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -63,8 +63,8 @@ export default function AvatarList() {
         ))}
         {[...Array(numberOfEmptyItems).keys()].map((index) => (
           <Grid key={index} item container alignItems="center">
-            <Avatar src={`/images/${mediaPath}empty.svg`} className={classes.empty} />
-            <Typography variant="h6" gutterBottom>
+            <Avatar src={`/images/${mediaPath}empty.svg`} className={classes.empty} alt="Empty element" />
+            <Typography variant="h6" component="h3" gutterBottom>
               Wähle deine nächste Pflanze ...
             </Typography>
           </Grid>

@@ -19,7 +19,7 @@ export default function ShareButtons() {
               checked={useStore.getState().colorMode}
               onChange={handleColorMode}
               name="colorMode"
-              color="primary"
+              color="secondary"
             />
           </Grid>
           <Grid item>Bunt</Grid>

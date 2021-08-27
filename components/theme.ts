@@ -72,6 +72,7 @@ theme = {
     },
     MuiFab: {
       primary: {
+        color: theme.palette.text.primary,
         position: 'absolute',
         bottom: 16,
         right: 16,

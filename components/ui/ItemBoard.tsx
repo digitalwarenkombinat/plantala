@@ -6,7 +6,7 @@ import useStore, { ELEMENT_SUFFIX } from '../store';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     itemBoard: {
-      padding: theme.spacing(4),
+      padding: theme.spacing(2, 4),
       backgroundColor: theme.palette.secondary.main,
     },
   }),
@@ -27,22 +27,18 @@ export default function ItemBoard() {
         />
       </Grid>
       <Grid item>
-        <Typography id="rotation-slider" gutterBottom>
-          Rotation
-        </Typography>
+        <Typography id="rotation-slider">Rotation</Typography>
         <Slider
           aria-labelledby="rotation-slider"
-          valueLabelDisplay="on"
+          valueLabelDisplay="auto"
           max={360}
           value={getActiveElement().rotation || 0}
           onChange={(_event, value) => transformElement('rotation', value)}
         />
-        <Typography id="rotation-slider" gutterBottom>
-          Menge
-        </Typography>
+        <Typography id="rotation-slider">Menge</Typography>
         <Slider
           aria-labelledby="amount-slider"
-          valueLabelDisplay="on"
+          valueLabelDisplay="auto"
           step={2}
           marks
           min={4}
@@ -50,12 +46,10 @@ export default function ItemBoard() {
           value={getActiveElement().amount || 8}
           onChange={(_event, value) => transformElement('amount', value)}
         />
-        <Typography id="rotation-slider" gutterBottom>
-          Größe
-        </Typography>
+        <Typography id="rotation-slider">Größe</Typography>
         <Slider
           aria-labelledby="scale-slider"
-          valueLabelDisplay="on"
+          valueLabelDisplay="auto"
           step={0.1}
           marks
           min={0.1}
@@ -63,12 +57,10 @@ export default function ItemBoard() {
           value={getActiveElement().scale || 1}
           onChange={(_event, value) => transformElement('scale', value)}
         />
-        <Typography id="distance-slider" gutterBottom>
-          Abstand
-        </Typography>
+        <Typography id="distance-slider">Abstand</Typography>
         <Slider
           aria-labelledby="distance-slider"
-          valueLabelDisplay="on"
+          valueLabelDisplay="auto"
           min={50}
           max={300}
           value={getActiveElement().distance || 50}

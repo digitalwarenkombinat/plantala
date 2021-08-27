@@ -1,11 +1,15 @@
 import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import { useCanvas } from '../utils/useCanvas';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   canvas: {
-    width: '50vh',
+    maxWidth: '95vw',
+    padding: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '50vw',
+    },
   },
 }));
 
@@ -15,7 +19,13 @@ const Mandala = () => {
 
   return (
     <Grid container justifyContent="center">
-      <canvas ref={canvasRef} className={classes.canvas} width={canvasWidth} height={canvasHeight} />
+      <canvas
+        ref={canvasRef}
+        id="plantalaCanvas"
+        className={classes.canvas}
+        width={canvasWidth}
+        height={canvasHeight}
+      />
     </Grid>
   );
 };

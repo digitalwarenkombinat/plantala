@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export default function SelectFab() {
   return (
-    <Link href="/share" passHref>
-      <Fab variant="extended" color="primary">
+    <Link href="/share" passHref as={process.env.BACKEND_URL + '/'}>
+      <Fab variant="extended" color="primary" aria-label="share">
         <ShareIcon />
         Teile dein Plantala
       </Fab>
