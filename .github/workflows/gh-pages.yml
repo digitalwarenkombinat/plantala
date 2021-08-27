@@ -15,15 +15,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Use Node.js 14.x
+      - name: Install and Build
         uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Installing my packages
       - run: npm ci
-
-      - name: Build my App
       - run: npm run build
       - run: npm run export
         env:
