@@ -1,14 +1,15 @@
 import Fab from '@material-ui/core/Fab';
 import ShareIcon from '@material-ui/icons/Share';
-import Link from 'next/link';
+
+import CustomLink from '../CustomLink';
 
 export default function SelectFab() {
   return (
-    <Link href="/share" passHref as={process.env.BACKEND_URL + '/'}>
+    <CustomLink href="/share">
       <Fab variant="extended" color="primary" aria-label="share">
         <ShareIcon />
         Teile dein Plantala
       </Fab>
-    </Link>
+    </CustomLink>
   );
 }

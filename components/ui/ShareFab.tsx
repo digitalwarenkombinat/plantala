@@ -1,14 +1,15 @@
 import Fab from '@material-ui/core/Fab';
 import Replay from '@material-ui/icons/Replay';
-import Link from 'next/link';
+
+import CustomLink from '../CustomLink';
 
 export default function ShareFab() {
   return (
-    <Link href="/" passHref as={process.env.BACKEND_URL + '/'}>
+    <CustomLink href="/">
       <Fab variant="extended" color="primary" aria-label="replay">
         <Replay />
         Noch mal ganz von vorn
       </Fab>
-    </Link>
+    </CustomLink>
   );
 }

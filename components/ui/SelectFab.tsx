@@ -1,14 +1,15 @@
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
-import Link from 'next/link';
+
+import CustomLink from '../CustomLink';
 
 export default function SelectFab() {
   return (
-    <Link href="/edit" passHref as={process.env.BACKEND_URL + '/'}>
+    <CustomLink href="/edit">
       <Fab variant="extended" color="primary" aria-label="edit">
         <EditIcon />
         Bearbeite dein Plantala
       </Fab>
-    </Link>
+    </CustomLink>
   );
 }

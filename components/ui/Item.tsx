@@ -1,23 +1,14 @@
 import { useState } from 'react';
 
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  ImageListItem,
-  ImageListItemBar,
-} from '@material-ui/core';
+import { IconButton, ImageListItem, ImageListItemBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import Link from 'next/link';
 
-import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX, IMedia } from '../store';
+import useStore, { ELEMENT_SUFFIX, IMedia } from '../store';
+import { BoardDialog } from './BoardDialog';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   item: {
     padding: 2,
   },
@@ -40,43 +31,6 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '70vh',
   },
 }));
-
-function BoardDialog({ onClose, selectedItem, open }: { onClose: () => void; selectedItem: IMedia; open: boolean }) {
-  const classes = useStyles();
-  const { mediaPath } = useStore();
-
-  const handleClose = () => {
-    onClose();
-  };
-
-  return (
-    <Dialog onClose={handleClose} aria-labelledby="board-dialog-title" open={open}>
-      <DialogTitle id="board-dialog-title">{selectedItem.name}</DialogTitle>
-      <DialogContent>{selectedItem.description}</DialogContent>
-      <img
-        alt={selectedItem.name}
-        className={classes.boardMedia}
-        src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
-        width={800}
-        height={1000}
-      />
-      <DialogActions>
-        <Link href={selectedItem.wiki} passHref={true} as={process.env.BACKEND_URL + '/'}>
-          <a target="_blank">
-            <img alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} />
-          </a>
-        </Link>
-        <Link href={selectedItem.link} passHref={true}>
-          <a target="_blank">
-            <Button onClick={handleClose} color="primary">
-              Erfahre noch mehr über diese Lehrtafel
-            </Button>
-          </a>
-        </Link>
-      </DialogActions>
-    </Dialog>
-  );
-}
 
 export default function Item({ item }: { item: IMedia }) {
   const classes = useStyles();
