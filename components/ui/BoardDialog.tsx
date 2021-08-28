@@ -27,14 +27,19 @@ export function BoardDialog({
       <img
         alt={selectedItem.name}
         className={classes.boardMedia}
-        src={`/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
+        src={`${process.env.pathPrefix}/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
         width={800}
         height={1000}
       />
       <DialogActions>
         <CustomLink href={selectedItem.wiki}>
           <a target="_blank">
-            <img alt="IIIF Logo" src={`/images/${mediaPath}iiif${ELEMENT_SUFFIX}`} width={50} height={50} />
+            <img
+              alt="IIIF Logo"
+              src={`${process.env.pathPrefix}/images/${mediaPath}iiif${ELEMENT_SUFFIX}`}
+              width={50}
+              height={50}
+            />
           </a>
         </CustomLink>
         <CustomLink href={selectedItem.link}>

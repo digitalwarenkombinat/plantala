@@ -13,7 +13,12 @@ export default function Header() {
       <Toolbar>
         <CustomLink href="/">
           <div>
-            <img alt="Plantala Logo" src={`/images/${mediaPath}logo.svg`} width={60} height={60} />
+            <img
+              alt="Plantala Logo"
+              src={`${process.env.pathPrefix}/images/${mediaPath}logo.svg`}
+              width={60}
+              height={60}
+            />
           </div>
         </CustomLink>
         <Typography variant="h2">Plantala</Typography>

@@ -53,7 +53,7 @@ export default function Item({ item }: { item: IMedia }) {
         <img
           alt={item.name}
           className={classes.itemMedia}
-          src={`/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
+          src={`${process.env.pathPrefix}/images/${mediaPath}${item.source}${ELEMENT_SUFFIX}`}
           onClick={handleClickOpen}
         />
         <ImageListItemBar

@@ -23,7 +23,7 @@ export default function ItemBoard() {
         <Avatar
           key={getActiveElement().name}
           alt={getActiveElement().name}
-          src={`/images/${mediaPath}${getActiveElement().source}${ELEMENT_SUFFIX}`}
+          src={`${process.env.pathPrefix}/images/${mediaPath}${getActiveElement().source}${ELEMENT_SUFFIX}`}
         />
       </Grid>
       <Grid item>

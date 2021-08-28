@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   startImage: {
     backgroundColor: theme.palette.secondary.main,
-    backgroundImage: `url('/images/${mediaPath}start.webp')`,
+    backgroundImage: `url('${process.env.pathPrefix}/images/${mediaPath}start.webp')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: 'center center',

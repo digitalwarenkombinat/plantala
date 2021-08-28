@@ -25,7 +25,7 @@ function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
       // context.strokeRect(-size / 2, -size / 2, size, size);
     };
 
-    image.src = `/images/${mediaPath}${element.source}${colorPath}`;
+    image.src = `${process.env.pathPrefix}/images/${mediaPath}${element.source}${colorPath}`;
   }
 }
 

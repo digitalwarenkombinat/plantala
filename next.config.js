@@ -1,4 +1,11 @@
+const pathPrefix = process.env.DEPLOY_TARGET === 'gh-pages'
+  ? '/plantala'
+  : '';
+
 module.exports = {
-  basePath: '/plantala',
-  assetPrefix: '/plantala/', // assetPrefix requires the trailing slash
+  basePath: pathPrefix,
+  assetPrefix: `${pathPrefix}/`,
+  env: {
+    pathPrefix,
+  },
 };

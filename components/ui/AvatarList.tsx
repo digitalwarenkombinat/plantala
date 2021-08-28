@@ -53,7 +53,7 @@ export default function AvatarList() {
             <Avatar
               key={element.name}
               alt={element.name}
-              src={`/images/${mediaPath}${element.source}${ELEMENT_SUFFIX}`}
+              src={`${process.env.pathPrefix}/images/${mediaPath}${element.source}${ELEMENT_SUFFIX}`}
               onClick={() => activateElement(element)}
             />
             <Typography variant="h6" gutterBottom>
@@ -63,7 +63,11 @@ export default function AvatarList() {
         ))}
         {[...Array(numberOfEmptyItems).keys()].map((index) => (
           <Grid key={index} item container alignItems="center">
-            <Avatar src={`/images/${mediaPath}empty.svg`} className={classes.empty} alt="Empty element" />
+            <Avatar
+              src={`${process.env.pathPrefix}/images/${mediaPath}empty.svg`}
+              className={classes.empty}
+              alt="Empty element"
+            />
             <Typography variant="h6" component="h3" gutterBottom>
               Wähle deine nächste Pflanze ...
             </Typography>
