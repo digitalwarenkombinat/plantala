@@ -9,7 +9,7 @@ const mediaPath = useStore.getState().mediaPath;
 
 export default function Header() {
   return (
-    <AppBar position="static">
+    <AppBar position="absolute">
       <Toolbar>
         <CustomLink href="/">
           <div>
@@ -21,7 +21,9 @@ export default function Header() {
             />
           </div>
         </CustomLink>
-        <Typography variant="h2">Plantala</Typography>
+        <Typography variant="h2" component="h1">
+          Plantala
+        </Typography>
       </Toolbar>
     </AppBar>
   );

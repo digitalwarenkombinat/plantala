@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import useStore, { ELEMENT_SUFFIX, IMedia, VEKTOR_SUFFIX } from '../store';
-import { calculateImageCoordinates, calculateImageRotation, canvasHeight, canvasWidth, setImageValues } from './Utils';
+import { calculateImageCoordinates, calculateImageRotation, setImageValues } from './Utils';
 
 function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
   const mediaPath = useStore.getState().mediaPath;
@@ -10,7 +10,7 @@ function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
   const colorPath = colorMode ? ELEMENT_SUFFIX : VEKTOR_SUFFIX;
 
   for (let imageNumber = 0; imageNumber < amount; imageNumber++) {
-    const { imageX, imageY } = calculateImageCoordinates(imageNumber, amount, distance);
+    const { imageX, imageY } = calculateImageCoordinates(context, imageNumber, amount, distance);
     const imageRotation = calculateImageRotation(imageNumber, rotation, step);
 
     const image = new Image();
@@ -39,8 +39,10 @@ export function useCanvas() {
       const context = canvasObj.getContext('2d');
       if (context) {
         //useStore.subscribe(console.log);
+        //context.canvas.height = window.innerHeight / 1.5;
+        //context.canvas.width = window.innerWidth;
         context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, canvasWidth * imageMultiplier, canvasHeight * imageMultiplier);
+        context.clearRect(0, 0, context.canvas.width * imageMultiplier, context.canvas.height * imageMultiplier);
 
         // drawCoordinateSystem(context);
 
@@ -51,5 +53,5 @@ export function useCanvas() {
     }
   }, [colorMode, getSelectedElements, imageMultiplier, media]);
 
-  return { canvasRef, canvasWidth, canvasHeight };
+  return { canvasRef };
 }

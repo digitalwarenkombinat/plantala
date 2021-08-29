@@ -1,4 +1,4 @@
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import useStore from '../store';
@@ -6,19 +6,14 @@ import useStore from '../store';
 const mediaPath = useStore.getState().mediaPath;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  start: {
-    boxShadow: 'none',
-  },
-  startImage: {
-    backgroundColor: theme.palette.secondary.main,
+  image: {
     backgroundImage: `url('${process.env.pathPrefix}/images/${mediaPath}start.webp')`,
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    backgroundPosition: 'center center',
-    height: 0,
-    paddingBottom: '100%',
+    height: '50%',
     [theme.breakpoints.up('md')]: {
-      paddingBottom: '33%',
+      height: '100%',
     },
   },
 }));
@@ -26,9 +21,5 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function Main() {
   const classes = useStyles();
 
-  return (
-    <Paper className={classes.start}>
-      <div className={classes.startImage} />
-    </Paper>
-  );
+  return <Grid item xs={12} md={6} className={classes.image} />;
 }

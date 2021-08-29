@@ -19,12 +19,8 @@ async function shareCanvas() {
     files: filesArray,
   };
   if (navigator.share) {
-    navigator
-      .share(shareData)
-      .then(() => alert('success'))
-      .catch((error) => alert(error));
+    navigator.share(shareData);
   }
-  alert('not supported');
 }
 
 const ShareButtons = () => {
@@ -40,12 +36,12 @@ const ShareButtons = () => {
       </div>
       <Grid container spacing={2} justifyContent="center">
         <Grid item>
-          <Button variant="contained" color="secondary" onClick={() => shareCanvas()}>
+          <Button variant="contained" color="primary" disabled onClick={() => shareCanvas()}>
             Teilen
           </Button>
         </Grid>
         <Grid item>
-          <Button variant="outlined" color="secondary" onClick={handlePrint}>
+          <Button variant="outlined" color="primary" disabled onClick={handlePrint}>
             Drucken
           </Button>
         </Grid>

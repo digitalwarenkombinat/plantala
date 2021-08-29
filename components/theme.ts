@@ -60,9 +60,10 @@ theme = {
         cursor: 'pointer',
         borderWidth: 2,
         borderStyle: 'solid',
-        margin: 2,
-        height: '2.5rem',
-        width: '2.5rem',
+        margin: 4,
+        padding: 2,
+        height: '3rem',
+        width: '3rem',
         borderColor: infoColor,
         [theme.breakpoints.up('sm')]: {
           height: '3em',
@@ -81,6 +82,11 @@ theme = {
     MuiSvgIcon: {
       root: {
         marginRight: 8,
+      },
+    },
+    MuiDialogContent: {
+      root: {
+        overflowY: 'visible',
       },
     },
   },

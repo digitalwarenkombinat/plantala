@@ -6,8 +6,8 @@ import StartImage from '../components/ui/StartImage';
 export default function Index() {
   return (
     <>
-      <StartBanner />
       <StartImage />
+      <StartBanner />
       <StartFab />
     </>
   );

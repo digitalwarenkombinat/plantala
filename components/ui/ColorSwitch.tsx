@@ -11,15 +11,15 @@ export default function ShareButtons() {
   };
   return (
     <FormGroup>
-      <Typography component="div">
-        <Grid component="label" container alignItems="center" spacing={1}>
+      <Typography component="div" paragraph>
+        <Grid component="label" container alignItems="center" justifyContent="center" spacing={1}>
           <Grid item>S/W</Grid>
           <Grid item>
             <Switch
-              checked={useStore.getState().colorMode}
+              checked={useStore((state) => state.colorMode)}
               onChange={handleColorMode}
               name="colorMode"
-              color="secondary"
+              color="primary"
             />
           </Grid>
           <Grid item>Bunt</Grid>

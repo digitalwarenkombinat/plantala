@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Typography from '@material-ui/core/Typography';
@@ -11,14 +10,14 @@ import useStore, { AVATAR_COUNT, ELEMENT_SUFFIX } from '../store';
 import ItemBoard from './ItemBoard';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  main: {
-    position: 'relative',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.text.primary,
-    paddingLeft: theme.spacing(4),
+  avatarList: {
+    padding: theme.spacing(0, 2),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(4),
+    },
   },
   empty: {
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    opacity: '0.8',
     cursor: 'initial',
   },
 }));
@@ -46,8 +45,8 @@ export default function AvatarList() {
   };
 
   return (
-    <Paper square className={classes.main}>
-      <Grid container direction="column">
+    <Grid item xs={12} className={classes.avatarList}>
+      <Grid container>
         {getSelectedElements().map((element) => (
           <Grid key={element.name} item container alignItems="center">
             <Avatar
@@ -56,7 +55,7 @@ export default function AvatarList() {
               src={`${process.env.pathPrefix}/images/${mediaPath}${element.source}${ELEMENT_SUFFIX}`}
               onClick={() => activateElement(element)}
             />
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" component="h3">
               {element.shortName}
             </Typography>
           </Grid>
@@ -68,7 +67,7 @@ export default function AvatarList() {
               className={classes.empty}
               alt="Empty element"
             />
-            <Typography variant="h6" component="h3" gutterBottom>
+            <Typography variant="h6" component="h3">
               Wähle deine nächste Pflanze ...
             </Typography>
           </Grid>
@@ -77,6 +76,6 @@ export default function AvatarList() {
       <SwipeableDrawer anchor="top" open={isOpen} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
         <ItemBoard />
       </SwipeableDrawer>
-    </Paper>
+    </Grid>
   );
 }

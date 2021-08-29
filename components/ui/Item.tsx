@@ -10,7 +10,7 @@ import { BoardDialog } from './BoardDialog';
 
 export const useStyles = makeStyles((theme) => ({
   item: {
-    padding: 2,
+    paddingRight: theme.spacing(1),
   },
   title: {
     color: theme.palette.common.white,
@@ -19,16 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
   itemMedia: {
-    backgroundColor: theme.palette.secondary.main,
     filter: 'drop-shadow(1px 2px 3px black)',
-  },
-  itemActions: {
-    justifyContent: 'space-evenly',
-  },
-  boardMedia: {
-    padding: 2,
-    width: '100%',
-    maxHeight: '70vh',
   },
 }));
 
@@ -58,6 +49,7 @@ export default function Item({ item }: { item: IMedia }) {
         />
         <ImageListItemBar
           title={item.shortName}
+          subtitle="Klicke auf die Pflanze um mehr zu erfahren"
           position="top"
           classes={{
             root: classes.titleBar,
@@ -77,7 +69,6 @@ export default function Item({ item }: { item: IMedia }) {
           }
           actionPosition="left"
         />
-        <ImageListItemBar position="bottom" title="Klicke auf die Pflanze um mehr zu erfahren" />
       </ImageListItem>
       <BoardDialog selectedItem={item} open={open} onClose={handleClose} />
     </>

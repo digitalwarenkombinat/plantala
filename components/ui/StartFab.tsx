@@ -8,7 +8,7 @@ export default function StartFab() {
     <CustomLink href="/select">
       <Fab variant="extended" color="primary" aria-label="add">
         <AddIcon />
-        Erstelle dein Plantala
+        Los gehts
       </Fab>
     </CustomLink>
   );

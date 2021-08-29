@@ -1,11 +1,16 @@
+import dynamic from 'next/dynamic';
+
 import Layout from '../components/Layout';
+import ShareBanner from '../components/ui/ShareBanner';
 import ShareFab from '../components/ui/ShareFab';
-import ShareImage from '../components/ui/ShareImage';
+
+const DynamicMandala = dynamic(() => import('../components/ui/Mandala'), { ssr: false });
 
 export default function Share() {
   return (
     <>
-      <ShareImage />
+      <ShareBanner />
+      <DynamicMandala />
       <ShareFab />
     </>
   );

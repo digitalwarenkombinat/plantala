@@ -1,8 +1,15 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import CustomLink from '../CustomLink';
 import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX, IMedia } from '../store';
-import { useStyles } from './Item';
+
+export const useStyles = makeStyles(() => ({
+  boardMedia: {
+    width: '100%',
+    maxHeight: '75vh',
+  },
+}));
 
 export function BoardDialog({
   onClose,
