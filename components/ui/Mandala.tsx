@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
   mandala: {
     width: '100%',
     height: '100%',
+    maxWidth: '800px',
   },
 }));
 
@@ -15,7 +16,7 @@ const Mandala = () => {
   const { canvasRef } = useCanvas();
 
   return (
-    <Grid item xs={12}>
+    <Grid container justifyContent="center" item xs={12}>
       <canvas ref={canvasRef} className={classes.mandala} id="plantalaCanvas" width="800" height="800" />
     </Grid>
   );

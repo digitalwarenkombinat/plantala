@@ -11,7 +11,7 @@ import ItemBoard from './ItemBoard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   avatarList: {
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(4),
     },

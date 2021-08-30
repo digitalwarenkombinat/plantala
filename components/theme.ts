@@ -122,6 +122,13 @@ theme = {
         overflowY: 'visible',
       },
     },
+    MuiImageListItem: {
+      item: {
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        borderRadius: '5%',
+      },
+    },
     MuiToolbar: {
       root: {
         '& > *': {
