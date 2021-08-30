@@ -25,12 +25,12 @@ export default function MyApp({ Component, pageProps }) {
         <title>Plantala</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <meta name="description" content="Malen! Strahlen! Plantala!" />
-        <link rel="preload" href="/fonts/GinoraSans.otf" as="font" crossOrigin="" />
-        <link rel="preload" href="/fonts/Magilio.otf" as="font" crossOrigin="" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="preload" href={`${process.env.pathPrefix}/fonts/GinoraSans.otf`} as="font" crossOrigin="" />
+        <link rel="preload" href={`${process.env.pathPrefix}/fonts/Magilio.otf`} as="font" crossOrigin="" />
+        <link rel="icon" href={`${process.env.pathPrefix}/favicon.ico`} sizes="any" />
+        <link rel="icon" href={`${process.env.pathPrefix}/icon.svg`} type="image/svg+xml" />
+        <link rel="apple-touch-icon" href={`${process.env.pathPrefix}/apple-touch-icon.png`} />
+        <link rel="manifest" href={`${process.env.pathPrefix}/manifest.webmanifest`} />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
