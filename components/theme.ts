@@ -16,7 +16,7 @@ const magilio = {
   fontWeight: 400,
   src: `
     local('Magilio'),
-    url('/fonts/Magilio.otf') format('opentype')
+    url('${process.env.pathPrefix}/fonts/Magilio.otf') format('opentype')
   `,
 };
 
@@ -26,7 +26,7 @@ const ginoraSans = {
   fontWeight: 400,
   src: `
     local('GinoraSans'),
-    url('/fonts/GinoraSans.otf') format('opentype')
+    url('${process.env.pathPrefix}/fonts/GinoraSans.otf') format('opentype')
   `,
 };
 
