@@ -10,6 +10,26 @@ const errorColor = mediaData.colors.errorColor || '#f3aa1e';
 const infoColor = mediaData.colors.infoColor || '#ab465a';
 const successColor = mediaData.colors.successColor || '#f3aa1e';
 
+const magilio = {
+  fontFamily: 'Magilio',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: `
+    local('Magilio'),
+    url('/fonts/Magilio.otf') format('opentype')
+  `,
+};
+
+const ginoraSans = {
+  fontFamily: 'GinoraSans',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: `
+    local('GinoraSans'),
+    url('/fonts/GinoraSans.otf') format('opentype')
+  `,
+};
+
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
   palette: {
@@ -36,6 +56,14 @@ let theme = createTheme({
     },
   },
   typography: {
+    fontFamily: 'GinoraSans, Arial',
+    h2: {
+      fontFamily: 'Magilio, Arial',
+      marginTop: '0.5rem',
+    },
+    h3: {
+      fontFamily: 'Magilio, Arial',
+    },
     button: {
       text: textColor,
     },
@@ -50,6 +78,11 @@ theme = responsiveFontSizes(theme);
 theme = {
   ...theme,
   overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [magilio, ginoraSans],
+      },
+    },
     MuiButton: {
       contained: {
         backgroundColor: infoColor,
@@ -87,6 +120,13 @@ theme = {
     MuiDialogContent: {
       root: {
         overflowY: 'visible',
+      },
+    },
+    MuiToolbar: {
+      root: {
+        '& > *': {
+          marginRight: theme.spacing(2),
+        },
       },
     },
   },

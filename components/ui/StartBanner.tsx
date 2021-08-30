@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
   },

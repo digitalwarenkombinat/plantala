@@ -12,14 +12,12 @@ export default function Header() {
     <AppBar position="absolute">
       <Toolbar>
         <CustomLink href="/">
-          <div>
-            <img
-              alt="Plantala Logo"
-              src={`${process.env.pathPrefix}/images/${mediaPath}logo.svg`}
-              width={60}
-              height={60}
-            />
-          </div>
+          <img
+            alt="Plantala Logo"
+            src={`${process.env.pathPrefix}/images/${mediaPath}logo.svg`}
+            width={60}
+            height={60}
+          />
         </CustomLink>
         <Typography variant="h2" component="h1">
           Plantala
