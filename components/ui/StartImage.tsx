@@ -11,9 +11,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    height: '50%',
+    height: '50vh',
     [theme.breakpoints.up('md')]: {
-      height: '100%',
+      height: '100vh',
+    },
+    animation: '$app-landing-spin infinite 30s linear',
+  },
+  '@keyframes app-landing-spin': {
+    '0%': {
+      transform: 'rotate(360deg)',
+    },
+    '100%': {
+      transform: 'rotate(0deg)',
     },
   },
 }));

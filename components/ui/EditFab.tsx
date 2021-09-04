@@ -8,7 +8,7 @@ export default function SelectFab() {
     <CustomLink href="/share">
       <Fab variant="extended" color="primary" aria-label="share">
         <ShareIcon />
-        Teile dein Plantala
+        Fertig!
       </Fab>
     </CustomLink>
   );

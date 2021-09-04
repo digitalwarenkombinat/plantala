@@ -8,7 +8,7 @@ export default function StartFab() {
     <CustomLink href="/select">
       <Fab variant="extended" color="primary" aria-label="add">
         <AddIcon />
-        Los gehts
+        Los geht&apos;s!
       </Fab>
     </CustomLink>
   );

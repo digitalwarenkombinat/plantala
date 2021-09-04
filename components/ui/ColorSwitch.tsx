@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 import useStore from '../store';
 
-export default function ShareButtons() {
+export default function ColorSwitch() {
   const handleColorMode = () => {
     useStore.setState({ colorMode: !useStore.getState().colorMode });
   };

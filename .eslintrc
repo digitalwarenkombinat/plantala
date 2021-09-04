@@ -8,7 +8,6 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:sonarjs/recommended",
     "next",
     "next/core-web-vitals",
     "plugin:prettier/recommended"
@@ -47,8 +46,6 @@
     "react/display-name": ["off"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-
-    "sonarjs/cognitive-complexity": ["warn", 20],
 
     "@next/next/no-img-element": ["off"]
   }

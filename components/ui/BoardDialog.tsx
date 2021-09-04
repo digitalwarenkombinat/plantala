@@ -1,13 +1,12 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import CustomLink from '../CustomLink';
-import useStore, { BOARD_SUFFIX, ELEMENT_SUFFIX, IMedia } from '../store';
+import useStore, { BOARD_SUFFIX, IMedia } from '../store';
 
 export const useStyles = makeStyles(() => ({
   boardMedia: {
-    width: '100%',
-    maxHeight: '75vh',
+    width: '75%',
+    height: 'auto',
   },
 }));
 
@@ -28,7 +27,7 @@ export function BoardDialog({
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="board-dialog-title" open={open}>
+    <Dialog onClose={handleClose} aria-labelledby="board-dialog" open={open} maxWidth={'md'}>
       <DialogTitle id="board-dialog-title">{selectedItem.name}</DialogTitle>
       <DialogContent>{selectedItem.description}</DialogContent>
       <img
@@ -39,23 +38,9 @@ export function BoardDialog({
         height={1000}
       />
       <DialogActions>
-        <CustomLink href={selectedItem.wiki}>
-          <a target="_blank">
-            <img
-              alt="IIIF Logo"
-              src={`${process.env.pathPrefix}/images/${mediaPath}iiif${ELEMENT_SUFFIX}`}
-              width={50}
-              height={50}
-            />
-          </a>
-        </CustomLink>
-        <CustomLink href={selectedItem.link}>
-          <a target="_blank">
-            <Button onClick={handleClose} color="primary">
-              Erfahre noch mehr über diese Lehrtafel
-            </Button>
-          </a>
-        </CustomLink>
+        <Link href={selectedItem.link} target="_blank" rel="noreferrer">
+          Erfahre noch mehr über diese Lehrtafel
+        </Link>
       </DialogActions>
     </Dialog>
   );

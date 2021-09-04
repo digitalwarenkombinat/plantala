@@ -4,28 +4,22 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Typography from '@material-ui/core/Typography';
 
-import useStore, { AVATAR_COUNT, ELEMENT_SUFFIX } from '../store';
+import useStore, { ELEMENT_SUFFIX } from '../store';
 import ItemBoard from './ItemBoard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   avatarList: {
-    padding: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(4),
-    },
+    padding: theme.spacing(4, 2),
   },
-  empty: {
-    opacity: '0.8',
-    cursor: 'initial',
+  avatar: {
+    borderColor: theme.palette.info.main,
   },
 }));
 
-export default function AvatarList() {
+export default function AvatarEdit() {
   const classes = useStyles();
   const { getSelectedElements, mediaPath } = useStore();
-  const numberOfEmptyItems = Math.max(0, AVATAR_COUNT - getSelectedElements().length);
   const [isOpen, setOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -46,30 +40,16 @@ export default function AvatarList() {
 
   return (
     <Grid item xs={12} className={classes.avatarList}>
-      <Grid container>
+      <Grid container justifyContent="space-evenly">
         {getSelectedElements().map((element) => (
-          <Grid key={element.name} item container alignItems="center">
+          <Grid key={element.name} item>
             <Avatar
               key={element.name}
               alt={element.name}
               src={`${process.env.pathPrefix}/images/${mediaPath}${element.source}${ELEMENT_SUFFIX}`}
               onClick={() => activateElement(element)}
+              className={classes.avatar}
             />
-            <Typography variant="h6" component="h3">
-              {element.shortName}
-            </Typography>
-          </Grid>
-        ))}
-        {[...Array(numberOfEmptyItems).keys()].map((index) => (
-          <Grid key={index} item container alignItems="center">
-            <Avatar
-              src={`${process.env.pathPrefix}/images/${mediaPath}empty.svg`}
-              className={classes.empty}
-              alt="Empty element"
-            />
-            <Typography variant="h6" component="h3">
-              Wähle deine nächste Pflanze ...
-            </Typography>
           </Grid>
         ))}
       </Grid>

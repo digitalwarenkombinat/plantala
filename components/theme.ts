@@ -3,8 +3,8 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { mediaData } from '../public/mediaData';
 
 const primaryColor = mediaData.colors.primaryColor || '#799160';
-const secondaryColor = mediaData.colors.secondaryColor || '#e0bf96';
-const backgroundColor = mediaData.colors.backgroundColor || '#faebd7';
+const secondaryColor = mediaData.colors.secondaryColor || '#faebd7';
+const backgroundColor = mediaData.colors.backgroundColor || '#e0bf96';
 const textColor = mediaData.colors.textColor || '#341419';
 const errorColor = mediaData.colors.errorColor || '#f3aa1e';
 const infoColor = mediaData.colors.infoColor || '#ab465a';
@@ -18,6 +18,7 @@ const magilio = {
     local('Magilio'),
     url('${process.env.pathPrefix}/fonts/Magilio.otf') format('opentype')
   `,
+  fontDisplay: 'swap',
 };
 
 const ginoraSans = {
@@ -60,15 +61,16 @@ let theme = createTheme({
     h2: {
       fontFamily: 'Magilio, Arial',
       marginTop: '0.5rem',
+      flexGrow: 1,
     },
     h3: {
       fontFamily: 'Magilio, Arial',
     },
+    h6: {
+      textAlign: 'center',
+    },
     button: {
       text: textColor,
-    },
-    body1: {
-      fontSize: '2rem',
     },
   },
 });
@@ -83,9 +85,23 @@ theme = {
         '@font-face': [magilio, ginoraSans],
       },
     },
+    MuiGrid: {
+      root: {
+        '@media (prefers-reduced-motion: reduce)': {
+          '& *': {
+            animationDuration: '0.001ms !important',
+            animationIterationCount: '1 !important',
+            transitionDuration: '0.001ms !important',
+          },
+        },
+      },
+    },
     MuiButton: {
       contained: {
         backgroundColor: infoColor,
+      },
+      root: {
+        textTransform: 'none',
       },
     },
     MuiAvatar: {
@@ -93,23 +109,40 @@ theme = {
         cursor: 'pointer',
         borderWidth: 2,
         borderStyle: 'solid',
-        margin: 4,
-        padding: 2,
-        height: '3rem',
-        width: '3rem',
+        margin: 0,
+        padding: 4,
+        height: '4rem',
+        width: '4rem',
         borderColor: infoColor,
         [theme.breakpoints.up('sm')]: {
-          height: '3em',
-          width: '3em',
+          height: '5em',
+          width: '5em',
         },
       },
     },
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'none',
+      },
+    },
+    MuiLink: {
+      root: {
+        fontWeight: 'bold',
+      },
+    },
     MuiFab: {
-      primary: {
+      extended: {
         color: theme.palette.text.primary,
-        position: 'absolute',
-        bottom: 16,
-        right: 16,
+        position: 'fixed',
+        bottom: theme.spacing(2),
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '75%',
+      },
+    },
+    MuiIconButton: {
+      root: {
+        padding: 0,
       },
     },
     MuiSvgIcon: {
@@ -117,22 +150,20 @@ theme = {
         marginRight: 8,
       },
     },
+    MuiDialog: {
+      paperScrollPaper: {
+        alignItems: 'center',
+      },
+    },
     MuiDialogContent: {
       root: {
         overflowY: 'visible',
       },
     },
-    MuiImageListItem: {
-      item: {
-        borderStyle: 'solid',
-        borderWidth: '1px',
-        borderRadius: '5%',
-      },
-    },
     MuiToolbar: {
       root: {
         '& > *': {
-          marginRight: theme.spacing(2),
+          margin: theme.spacing(0.5, 2, 0, 1),
         },
       },
     },

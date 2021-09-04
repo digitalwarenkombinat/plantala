@@ -59,7 +59,7 @@ const useStore = create<Store>(
       selectElement: (element: IMedia): void =>
         set((state) => ({
           media: state.media.map((item) => {
-            if (item.name !== element.name) {
+            if (item.source !== element.source) {
               return item;
             }
             return {
@@ -73,7 +73,7 @@ const useStore = create<Store>(
       deselectElement: (element: IMedia): void =>
         set((state) => ({
           media: state.media.map((item) => {
-            if (item.name !== element.name) {
+            if (item.source !== element.source) {
               return reorderSelectedElement(item);
             }
             return {
@@ -89,7 +89,7 @@ const useStore = create<Store>(
       activateElement: (element: IMedia): void =>
         set((state) => ({
           media: state.media.map((item) => {
-            if (item.name !== element.name) {
+            if (item.source !== element.source) {
               return {
                 ...item,
                 active: false,
@@ -116,8 +116,8 @@ const useStore = create<Store>(
         })),
 
       resetElements: (): void =>
-        set((state) => ({
-          media: state.media.map((media) => ({ ...media, selected: false })),
+        set(() => ({
+          media: mediaData.images,
         })),
     }),
     {
