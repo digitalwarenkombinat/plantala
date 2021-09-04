@@ -8,10 +8,7 @@ const useStyles = makeStyles((theme: Theme) =>
     itemBoard: {
       padding: theme.spacing(2),
       backgroundColor: theme.palette.secondary.main,
-      backgroundImage: `url('${process.env.pathPrefix}/icon/rollup.svg')`,
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'contain',
+      borderBottom: '4px solid #000',
     },
   }),
 );
