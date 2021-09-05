@@ -44,6 +44,7 @@ export default function ItemList() {
   const theme = useTheme();
   const matchesUpSm = useMediaQuery(theme.breakpoints.up('sm'));
   const matchesUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  const matchesUpLg = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
     <Grid item xs={12} className={classes.itemList}>
@@ -51,7 +52,7 @@ export default function ItemList() {
         className={classes.imageList}
         cols={matchesUpSm ? 2.5 : 1}
         gap={2}
-        rowHeight={matchesUpSm ? (matchesUpMd ? 600 : 400) : 300}
+        rowHeight={matchesUpSm ? (matchesUpMd ? (matchesUpLg ? 850 : 600) : 400) : 300}
       >
         {media.map((item) => (
           <ImageListItem
