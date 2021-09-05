@@ -1,5 +1,6 @@
 export const mediaData = {
   isMaaS: false,
+  elementSuffix: '.webp',
   colors: {
     primaryColor: '',
     secondaryColor: '',
@@ -307,7 +308,7 @@ export const mediaData = {
       wiki: 'https://sammlungen.uni-goettingen.de/api/v1/records/record_naniweb_461325/manifest/',
     },
     {
-      name:'Steinnusspalme -Phytelephas macrocarpa',
+      name:'Steinnusspalme - Phytelephas macrocarpa',
       shortName:'Steinnusspalme',
       source: 'Phytelephas',
       description: 'Die Gattung der Steinnusspalmen, auch Elfenbeinpalmen genannt, sind in Süd- und Zentralamerika beheimatet. Ein Teil des Samens der Pflanze wird als pflanzlicher Elfenbeinersatz verwendet. Normalerweise wird als Elfenbein die Zahnsubstanz der Stoßzähne von Elefanten (und Mammuts) bezeichnet. Das Endosperm des Samens der Steinnusspalme ist in getrocknetem Zustand ebenso hart und wird für Schnitzwerk verwendet.',
