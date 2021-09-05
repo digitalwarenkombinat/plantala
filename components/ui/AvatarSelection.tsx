@@ -39,7 +39,7 @@ export default function AvatarSelection() {
         {[...Array(numberOfEmptyItems).keys()].map((index) => (
           <Grid key={index} item>
             <Avatar
-              src={`${process.env.pathPrefix}/images/${mediaPath}empty.svg`}
+              src={`${process.env.pathPrefix}/images/plants/empty.svg`}
               className={classes.emptyAvatar}
               alt="Empty element"
             />

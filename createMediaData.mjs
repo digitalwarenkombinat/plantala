@@ -35,7 +35,7 @@ async function getImages() {
         return {
           name: fileName,
           shortName: fileName,
-          source: file,
+          source: fileName,
           description: '',
           link: '',
           wiki: '',
@@ -51,6 +51,7 @@ async function getImages() {
 export async function createData() {
   const mediaData = {};
   mediaData.isMaaS = true;
+  mediaData.elementSuffix = '.png';
   mediaData.colors = await getColors();
   mediaData.images = await getImages();
 

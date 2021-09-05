@@ -10,20 +10,8 @@ async function handleSave() {
   const canvasElement = document.getElementById('plantalaCanvas') as HTMLCanvasElement;
   const dataUrl = canvasElement.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
-  // const filesArray = [
-  //   new File([blob], `Plantala_${new Date().getTime()}.png`, {
-  //     type: blob.type,
-  //     lastModified: new Date().getTime(),
-  //   }),
-  // ];
-  // const shareData = {
-  //   files: filesArray,
-  // };
-  // if (navigator.share) {
-  //   navigator.share(shareData);
-  // }
   if (blob) {
-    saveAs(blob, `Plantala_${new Date().toUTCString()}.png`);
+    saveAs(blob, 'Plantala.png');
   }
 }
 

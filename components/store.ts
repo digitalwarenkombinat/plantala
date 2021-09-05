@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 import { mediaData } from '../public/mediaData';
 
 export const AVATAR_COUNT = 5;
-export const ELEMENT_SUFFIX = '.webp';
+export const ELEMENT_SUFFIX = mediaData.elementSuffix || '.webp';
 export const BOARD_SUFFIX = '_Lehrtafel.webp';
 export const VEKTOR_SUFFIX = '_vektor.svg';
 
@@ -30,8 +30,9 @@ export interface IMedia {
 }
 
 type Store = {
-  media: IMedia[];
+  isMaaS: boolean;
   mediaPath: string;
+  media: IMedia[];
   imageMultiplier: number;
   colorMode: boolean;
   getSelectedElements: () => IMedia[];
@@ -46,6 +47,7 @@ type Store = {
 const useStore = create<Store>(
   persist(
     (set: SetState<Store>, get: GetState<Store>) => ({
+      isMaaS: mediaData.isMaaS,
       mediaPath: mediaData.isMaaS ? '' : 'plants/',
       media: mediaData.images,
       imageMultiplier: 1,
@@ -117,6 +119,8 @@ const useStore = create<Store>(
 
       resetElements: (): void =>
         set(() => ({
+          isMaaS: mediaData.isMaaS,
+          mediaPath: mediaData.isMaaS ? '' : 'plants/',
           media: mediaData.images,
         })),
     }),

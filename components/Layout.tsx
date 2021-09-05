@@ -7,6 +7,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     height: '100vh',
     backgroundColor: theme.palette.background.default,
+    '@media print': {
+      backgroundColor: 'transparent',
+    },
   },
   main: {
     color: theme.palette.text.primary,

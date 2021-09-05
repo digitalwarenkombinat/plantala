@@ -1,13 +1,12 @@
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-import useStore from '../store';
+import useStore, { ELEMENT_SUFFIX } from '../store';
 
 const mediaPath = useStore.getState().mediaPath;
-
 const useStyles = makeStyles((theme: Theme) => ({
   image: {
-    backgroundImage: `url('${process.env.pathPrefix}/images/${mediaPath}start.webp')`,
+    backgroundImage: `url('${process.env.pathPrefix}/images/${mediaPath}start${ELEMENT_SUFFIX}')`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
