@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function Item({ item }: { item: IMedia }) {
   const classes = useStyles();
-  const { isMaaS } = useStore();
+  const { isMaaS, getSelectedElements } = useStore();
   const selectElement = useStore((state) => state.selectElement);
   const deselectElement = useStore((state) => state.deselectElement);
 
@@ -47,7 +47,9 @@ export default function Item({ item }: { item: IMedia }) {
           <>
             <IconButton
               aria-label={`Select ${item.shortName}`}
-              onClick={() => (item.selected ? deselectElement(item) : selectElement(item))}
+              onClick={() =>
+                item.selected ? deselectElement(item) : getSelectedElements().length === 5 || selectElement(item)
+              }
             >
               {item.selected ? (
                 <FavoriteIcon className={classes.title} />
