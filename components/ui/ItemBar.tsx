@@ -30,8 +30,8 @@ export default function Item({ item }: { item: IMedia }) {
     setOpen(true);
   };
 
-  const handleCloseItem = () => {
-    setOpen(null);
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -58,7 +58,7 @@ export default function Item({ item }: { item: IMedia }) {
               )}
             </IconButton>
             {!isMaaS && (
-              <IconButton aria-label={`Info about ${item.shortName}`} onClick={() => handleClickOpen()}>
+              <IconButton aria-label={`Info about ${item.shortName}`} onClick={handleClickOpen}>
                 <InfoIcon className={classes.title} />
               </IconButton>
             )}
@@ -66,7 +66,11 @@ export default function Item({ item }: { item: IMedia }) {
         }
         actionPosition="left"
       />
-      <BoardDialog selectedItem={item} open={open} onClose={handleCloseItem} />
+      <BoardDialog
+        selectedItem={item}
+        open={open}
+        onClose={handleClose}
+      />
     </>
   );
 }

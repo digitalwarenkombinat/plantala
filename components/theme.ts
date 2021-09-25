@@ -138,6 +138,9 @@ theme = {
         left: '50%',
         transform: 'translateX(-50%)',
         width: '75%',
+        [theme.breakpoints.up('sm')]: {
+          width: '50%',
+        },
       },
     },
     MuiIconButton: {
@@ -155,9 +158,23 @@ theme = {
         alignItems: 'center',
       },
     },
+    MuiDialogTitle: {
+      root: {
+        padding: '1rem'
+      },
+    },
     MuiDialogContent: {
       root: {
         overflowY: 'visible',
+        padding: '1rem'
+      },
+    },
+    MuiSlider: {
+      root: {
+        padding: theme.spacing(2, 0),
+        [theme.breakpoints.up('sm')]: {
+          padding: theme.spacing(3, 0),
+        },
       },
     },
     MuiToolbar: {

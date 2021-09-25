@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   itemMedia: {
     filter: 'drop-shadow(1px 2px 3px black)',
     padding: theme.spacing(8),
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(10),
+    },
   },
 }));
 
@@ -45,14 +48,28 @@ export default function ItemList() {
   const matchesUpSm = useMediaQuery(theme.breakpoints.up('sm'));
   const matchesUpMd = useMediaQuery(theme.breakpoints.up('md'));
   const matchesUpLg = useMediaQuery(theme.breakpoints.up('lg'));
+  const matchesUpXl = useMediaQuery(theme.breakpoints.up('xl'));
+
+  function calculateRowHeight() {
+    if (matchesUpMd) return 600;
+    if (matchesUpSm) return 400;
+    return 300;
+  }
+
+  function calculateCols() {
+    if (matchesUpXl) return 4.5;
+    if (matchesUpLg) return 3.5;
+    if (matchesUpSm) return 2.5;
+    return 1.5;
+  }
 
   return (
     <Grid item xs={12} className={classes.itemList}>
       <ImageList
         className={classes.imageList}
-        cols={matchesUpSm ? 2.5 : 1}
+        cols={calculateCols()}
         gap={2}
-        rowHeight={matchesUpSm ? (matchesUpMd ? (matchesUpLg ? 850 : 600) : 400) : 300}
+        rowHeight={calculateRowHeight()}
       >
         {media.map((item) => (
           <ImageListItem

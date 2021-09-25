@@ -31,7 +31,7 @@ export default function ItemBoard() {
         valueLabelDisplay="auto"
         max={360}
         value={getActiveElement().rotation || 0}
-        onChange={(_event, value) => transformElement('rotation', value)}
+        onChangeCommitted={(_event, value) => transformElement('rotation', value)}
       />
       <Typography id="rotation-slider">Menge</Typography>
       <Slider
@@ -42,7 +42,7 @@ export default function ItemBoard() {
         min={4}
         max={20}
         value={getActiveElement().amount || 8}
-        onChange={(_event, value) => transformElement('amount', value)}
+        onChangeCommitted={(_event, value) => transformElement('amount', value)}
       />
       <Typography id="rotation-slider">Größe</Typography>
       <Slider
@@ -53,7 +53,7 @@ export default function ItemBoard() {
         min={0.1}
         max={2}
         value={getActiveElement().scale || 1}
-        onChange={(_event, value) => transformElement('scale', value)}
+        onChangeCommitted={(_event, value) => transformElement('scale', value)}
       />
       <Typography id="distance-slider">Abstand</Typography>
       <Slider
@@ -62,7 +62,7 @@ export default function ItemBoard() {
         min={50}
         max={300}
         value={getActiveElement().distance || 50}
-        onChange={(_event, value) => transformElement('distance', value)}
+        onChangeCommitted={(_event, value) => transformElement('distance', value)}
       />
     </Grid>
   );

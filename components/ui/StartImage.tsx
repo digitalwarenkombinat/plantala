@@ -12,18 +12,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: 'contain',
     height: '50vh',
     [theme.breakpoints.up('md')]: {
-      height: '100vh',
+      height: '60vh',
     },
-    animation: '$app-landing-spin infinite 30s linear',
-  },
-  '@keyframes app-landing-spin': {
-    '0%': {
-      transform: 'rotate(360deg)',
+    [theme.breakpoints.up('lg')]: {
+      height: '85vh',
     },
-    '100%': {
-      transform: 'rotate(0deg)',
-    },
-  },
+  }
 }));
 
 export default function Main() {
