@@ -4,8 +4,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 0, 0),
     textAlign: 'center',
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(2, 0, 0),
+    },
   },
 }));
 
@@ -18,7 +21,7 @@ export default function Header() {
 
   return (
     <Grid item xs={12} className={classes.banner}>
-      <Typography variant="h4" component="h3" paragraph>
+      <Typography variant="h4" component="h2" paragraph>
         {main.description}
       </Typography>
     </Grid>

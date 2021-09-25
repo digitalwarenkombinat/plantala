@@ -37,8 +37,8 @@ export function BoardDialog({
         alt={selectedItem.name}
         className={classes.boardMedia}
         src={`${process.env.pathPrefix}/images/${mediaPath}${selectedItem.source}${BOARD_SUFFIX}`}
-        width={800}
-        height={1000}
+        width={selectedItem.landscape ? 1000 : 800}
+        height={selectedItem.landscape ? 800 : 1000}
       />
       <DialogActions>
         <Link href={selectedItem.link} target="_blank" rel="noreferrer">

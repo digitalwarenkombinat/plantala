@@ -7,7 +7,7 @@ import useStore, { ELEMENT_SUFFIX } from '../store';
 
 const useStyles = makeStyles((theme: Theme) => ({
   avatarList: {
-    padding: theme.spacing(1, 4),
+    padding: theme.spacing(2, 4, 0),
   },
   avatar: {
     borderColor: theme.palette.info.main,
@@ -31,7 +31,7 @@ export default function AvatarShare() {
     <Grid item xs={12} className={classes.avatarList}>
       <Grid container alignItems="center">
         {getSelectedElements().map((element) => (
-          <Grid key={element.name} item container>
+          <Grid key={element.name} item container alignItems="center">
             <Grid item xs={1}>
               <Avatar
                 key={element.name}

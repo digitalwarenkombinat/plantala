@@ -38,13 +38,10 @@ export function useCanvas() {
       const canvasObj = canvasRef.current;
       const context = canvasObj.getContext('2d');
       if (context) {
-        //useStore.subscribe(console.log);
-        //context.canvas.height = window.innerHeight / 1.5;
-        //context.canvas.width = window.innerWidth;
         context.setTransform(1, 0, 0, 1, 0, 0);
         context.clearRect(0, 0, context.canvas.width * imageMultiplier, context.canvas.height * imageMultiplier);
         // drawCoordinateSystem(context);
-        getSelectedElements().forEach(element => drawElements(context, element));
+        getSelectedElements().forEach((element) => drawElements(context, element));
       }
     }
   }, [colorMode, getSelectedElements, imageMultiplier, media]);

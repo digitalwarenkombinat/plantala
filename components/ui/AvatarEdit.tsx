@@ -2,15 +2,20 @@ import { useState } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import useStore, { ELEMENT_SUFFIX } from '../store';
 import ItemBoard from './ItemBoard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   avatarList: {
-    padding: theme.spacing(4, 2),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '25%',
+      paddingRight: '25%',
+    },
   },
   avatar: {
     borderColor: theme.palette.info.main,
@@ -38,6 +43,10 @@ export default function AvatarEdit() {
     setOpen(true);
   };
 
+  const theme = useTheme();
+  const matchesUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  const anchor = matchesUpMd ? 'left' : 'top';
+
   return (
     <Grid item xs={12} className={classes.avatarList}>
       <Grid container justifyContent="space-evenly">
@@ -53,7 +62,7 @@ export default function AvatarEdit() {
           </Grid>
         ))}
       </Grid>
-      <SwipeableDrawer anchor="top" open={isOpen} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
+      <SwipeableDrawer anchor={anchor} open={isOpen} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
         <ItemBoard />
       </SwipeableDrawer>
     </Grid>

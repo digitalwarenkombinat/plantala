@@ -27,6 +27,7 @@ export interface IMedia {
   scale?: number;
   distance?: number;
   size?: number;
+  landscape?: boolean;
 }
 
 type Store = {

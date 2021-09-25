@@ -52,11 +52,15 @@ export function About({ onClose, open }: { onClose: () => void; open: boolean })
           Medienstation -digital und analog- zu entwickeln. Die Medienstation as a Service (MaaS) bietet dir eine
           einfache Möglichkeit, die Vorzüge Plantalas mit deinen Bildern zu verbinden. Willst du mehr erfahren? Schau in
           die{' '}
-          <Link href="https://github.com/digitalwarenkombinat/plantala/blob/main/medienstationAsAService/README.md" target="_blank" rel="noreferrer">
+          <Link
+            href="https://github.com/digitalwarenkombinat/plantala/blob/main/medienstationAsAService/README.md"
+            target="_blank"
+            rel="noreferrer"
+          >
             ausführliche Beschreibung
           </Link>{' '}
           von MaaS. Hast du Interesse, MaaS einzusetzen oder weiterzuentwickeln? Dann kontaktiere uns unter folgender
-          E-Mail-Adresse: <Link href="mailto:gerdesque@posteo.org">gerdesque@posteo.org</Link>
+          E-Mail-Adresse: <Link href="mailto:info@digitalwarenkombinat.de">info@digitalwarenkombinat.de</Link>
         </DialogContentText>
       </DialogContent>
     </Dialog>

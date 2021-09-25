@@ -1,19 +1,13 @@
 import { Grid } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { useCanvas } from '../utils/useCanvas';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   mandala: {
     width: '100%',
     height: '100%',
-    maxWidth: '350px',
-    [theme.breakpoints.up('sm')]: {
-      maxWidth: '600px',
-    },
-    [theme.breakpoints.up('md')]: {
-      maxWidth: '700px',
-    },
+    maxWidth: 'fit-content',
     '@media print': {
       maxWidth: '80vw',
     },

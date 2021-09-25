@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.up('lg')]: {
       height: '85vh',
     },
-  }
+  },
 }));
 
 export default function Main() {

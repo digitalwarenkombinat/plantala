@@ -9,6 +9,11 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       backgroundColor: theme.palette.secondary.main,
       borderBottom: '4px solid #000',
+      [theme.breakpoints.up('md')]: {
+        height: '100vh',
+        padding: theme.spacing(10, 3),
+        borderBottom: 'none',
+      },
     },
   }),
 );

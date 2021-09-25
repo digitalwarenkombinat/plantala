@@ -1,8 +1,7 @@
 import { ImageList } from '@material-ui/core';
 import { ImageListItem } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { useTheme } from '@material-ui/core/styles';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import useStore, { ELEMENT_SUFFIX } from '../store';
@@ -65,12 +64,7 @@ export default function ItemList() {
 
   return (
     <Grid item xs={12} className={classes.itemList}>
-      <ImageList
-        className={classes.imageList}
-        cols={calculateCols()}
-        gap={2}
-        rowHeight={calculateRowHeight()}
-      >
+      <ImageList className={classes.imageList} cols={calculateCols()} gap={2} rowHeight={calculateRowHeight()}>
         {media.map((item) => (
           <ImageListItem
             key={item.source}

@@ -102,6 +102,7 @@ theme = {
       },
       root: {
         textTransform: 'none',
+        fontSize: '1rem',
       },
     },
     MuiAvatar: {
@@ -160,20 +161,21 @@ theme = {
     },
     MuiDialogTitle: {
       root: {
-        padding: '1rem'
+        padding: '1rem',
       },
     },
     MuiDialogContent: {
       root: {
         overflowY: 'visible',
-        padding: '1rem'
+        padding: '1rem',
       },
     },
     MuiSlider: {
       root: {
         padding: theme.spacing(2, 0),
-        [theme.breakpoints.up('sm')]: {
-          padding: theme.spacing(3, 0),
+        [theme.breakpoints.up('md')]: {
+          minWidth: '25vw',
+          padding: theme.spacing(5, 0),
         },
       },
     },
@@ -182,11 +184,19 @@ theme = {
         '& > *': {
           margin: theme.spacing(0.5, 2, 0, 1),
         },
+        '& :first-child': {
+          height: '60px',
+        },
         '@media print': {
           '& > *': {
             margin: theme.spacing(1.5, 4),
           },
         },
+      },
+    },
+    MuiImageListItemBar: {
+      actionIconActionPosLeft: {
+        paddingLeft: theme.spacing(0.5),
       },
     },
   },

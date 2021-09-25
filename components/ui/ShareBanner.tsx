@@ -8,7 +8,7 @@ import ShareButtons from './ShareButtons';
 
 const useStyles = makeStyles((theme: Theme) => ({
   shareImage: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(4, 2),
     textAlign: 'center',
   },
 }));

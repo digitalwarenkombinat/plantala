@@ -66,11 +66,7 @@ export default function Item({ item }: { item: IMedia }) {
         }
         actionPosition="left"
       />
-      <BoardDialog
-        selectedItem={item}
-        open={open}
-        onClose={handleClose}
-      />
+      <BoardDialog selectedItem={item} open={open} onClose={handleClose} />
     </>
   );
 }
