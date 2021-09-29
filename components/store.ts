@@ -34,8 +34,8 @@ type Store = {
   isMaaS: boolean;
   mediaPath: string;
   media: IMedia[];
-  imageMultiplier: number;
   colorMode: boolean;
+  invertColorMode: () => void;
   getSelectedElements: () => IMedia[];
   selectElement: (element: IMedia) => void;
   deselectElement: (element: IMedia) => void;
@@ -51,9 +51,9 @@ const useStore = create<Store>(
       isMaaS: mediaData.isMaaS,
       mediaPath: mediaData.isMaaS ? '' : 'plants/',
       media: mediaData.images,
-      imageMultiplier: 1,
       colorMode: true,
 
+      invertColorMode: () => set((state) => ({ colorMode: !state.colorMode })),
       getSelectedElements: () =>
         get()
           .media.filter((media) => media.selected === true)

@@ -6,9 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import useStore from '../store';
 
 export default function ColorSwitch() {
-  const handleColorMode = () => {
-    useStore.setState({ colorMode: !useStore.getState().colorMode });
-  };
+  const invertColorMode = useStore((state) => state.invertColorMode);
+
   return (
     <FormGroup>
       <Typography component="div" paragraph>
@@ -17,7 +16,7 @@ export default function ColorSwitch() {
           <Grid item>
             <Switch
               checked={useStore((state) => state.colorMode)}
-              onChange={handleColorMode}
+              onChange={invertColorMode}
               name="colorMode"
               color="primary"
             />
