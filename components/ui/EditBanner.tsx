@@ -1,9 +1,10 @@
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import dynamic from 'next/dynamic';
 
 import useStore from '../store';
-import ColorSwitch from './ColorSwitch';
+const DynamicColorSwitch = dynamic(() => import('./ColorSwitch'), { ssr: false });
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
@@ -29,7 +30,7 @@ export default function Header() {
       <Typography variant="h4" component="h2" paragraph>
         {getSelectedElements().length > 0 ? main.description : main.fallback}
       </Typography>
-      {!isMaaS && <ColorSwitch />}
+      {!isMaaS && <DynamicColorSwitch />}
     </Grid>
   );
 }

@@ -1,10 +1,12 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import dynamic from 'next/dynamic';
 
 import useStore from '../store';
-import ColorSwitch from './ColorSwitch';
 import ShareButtons from './ShareButtons';
+
+const DynamicColorSwitch = dynamic(() => import('./ColorSwitch'), { ssr: false });
 
 const useStyles = makeStyles((theme: Theme) => ({
   shareImage: {
@@ -24,7 +26,7 @@ const ShareBanner = () => {
       <Typography variant="h4" component="h3" paragraph>
         {description}
       </Typography>
-      {!isMaaS && <ColorSwitch />}
+      {!isMaaS && <DynamicColorSwitch />}
       <ShareButtons />
     </Grid>
   );
