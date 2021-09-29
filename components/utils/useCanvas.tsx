@@ -31,7 +31,7 @@ function drawElements(context: CanvasRenderingContext2D, element: IMedia) {
 
 export function useCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { colorMode, getSelectedElements, imageMultiplier, media } = useStore();
+  const { colorMode, getSelectedElements, media } = useStore();
 
   useEffect(() => {
     if (media.length > 0 && canvasRef.current) {
@@ -39,12 +39,12 @@ export function useCanvas() {
       const context = canvasObj.getContext('2d');
       if (context) {
         context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, context.canvas.width * imageMultiplier, context.canvas.height * imageMultiplier);
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         // drawCoordinateSystem(context);
         getSelectedElements().forEach((element) => drawElements(context, element));
       }
     }
-  }, [colorMode, getSelectedElements, imageMultiplier, media]);
+  }, [colorMode, getSelectedElements, media]);
 
   return { canvasRef };
 }
