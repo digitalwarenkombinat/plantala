@@ -178,14 +178,17 @@ theme = {
           padding: theme.spacing(5, 0),
         },
       },
+      valueLabel: {
+        fontSize: '1.25rem',
+      },
     },
     MuiToolbar: {
       root: {
+        '& a': {
+          height: '60px',
+        },
         '& > *': {
           margin: theme.spacing(0.5, 2, 0, 1),
-        },
-        '& :first-child': {
-          height: '60px',
         },
         '@media print': {
           '& > *': {
@@ -195,7 +198,15 @@ theme = {
       },
     },
     MuiImageListItemBar: {
+      title: {
+        whiteSpace: 'normal',
+      },
+      titleWrap: {
+        flex: '1 1 auto',
+        marginRight: theme.spacing(0.5),
+      },
       actionIconActionPosLeft: {
+        flex: '0 0 auto',
         paddingLeft: theme.spacing(0.5),
       },
     },
