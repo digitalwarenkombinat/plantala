@@ -172,7 +172,7 @@ theme = {
     },
     MuiSlider: {
       root: {
-        padding: theme.spacing(2, 0),
+        padding: theme.spacing(1.5, 0),
         [theme.breakpoints.up('md')]: {
           minWidth: '25vw',
           padding: theme.spacing(5, 0),

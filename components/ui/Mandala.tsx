@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: '900px',
     },
     '@media print': {
-      maxWidth: '80vw',
+      maxWidth: '80%',
     },
   },
 }));
