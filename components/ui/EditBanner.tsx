@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const main = {
-  description: 'Wähle zum Bearbeiten ein Element aus!',
-  fallback: 'Gehe zurück und wähle Elemente aus!',
+  description: 'Wähle zum Bearbeiten eine Pflanze aus!',
+  fallback: 'Gehe zurück und wähle Pflanzenteile aus!',
 };
 
 export default function Header() {

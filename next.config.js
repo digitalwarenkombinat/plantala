@@ -1,4 +1,4 @@
-const pathPrefix = process.env.DEPLOY_TARGET === 'gh-pages' ? '/julala' : '';
+const pathPrefix = '';
 
 module.exports = {
   basePath: pathPrefix,
