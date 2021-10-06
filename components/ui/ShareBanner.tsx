@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const description = 'Speichere und drucke dein persönliches Plantala!';
+const description = 'Speichere und drucke dein persönliches Julala!';
 
 const ShareBanner = () => {
   const classes = useStyles();

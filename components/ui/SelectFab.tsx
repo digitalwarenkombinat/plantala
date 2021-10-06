@@ -8,7 +8,7 @@ export default function SelectFab() {
     <CustomLink href="/edit">
       <Fab variant="extended" color="primary" aria-label="edit">
         <EditIcon />
-        Erstelle dein Plantala!
+        Erstelle dein Julala!
       </Fab>
     </CustomLink>
   );

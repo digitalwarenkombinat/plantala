@@ -30,14 +30,14 @@ export default function Header() {
       <Toolbar disableGutters>
         <CustomLink href="/">
           <img
-            alt="Plantala Logo"
+            alt="Julala Logo"
             src={`${process.env.pathPrefix}/images/${mediaPath}logo${isMaaS ? '.png' : '.svg'}`}
             width={60}
             height={60}
           />
         </CustomLink>
         <Typography variant="h2" component="h1">
-          Plantala
+          Julala
         </Typography>
         <Box display="block" displayPrint="none" m={1}>
           <IconButton aria-label="about" onClick={handleClickOpen}>
@@ -45,7 +45,7 @@ export default function Header() {
           </IconButton>
         </Box>
         <Box display="none" displayPrint="block" m={1}>
-          <QRCode value="https://digitalwarenkombinat.github.io/plantala/" size={60} />
+          <QRCode value="https://digitalwarenkombinat.github.io/julala/" size={60} />
         </Box>
       </Toolbar>
       <About open={open} onClose={handleClose} />

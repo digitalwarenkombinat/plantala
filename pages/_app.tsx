@@ -22,11 +22,11 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Plantala | Digitalwarenkombinat</title>
+        <title>Julala | Digitalwarenkombinat</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <meta
           name="description"
-          content="Malen! Strahlen! Plantala! - Erstelle individuelle Mandalas aus historischen Pflanzendarstellungen."
+          content="Malen! Strahlen! Julala! - Erstelle individuelle Mandalas aus historischen Pflanzendarstellungen."
         />
         <link rel="preload" href={`${process.env.pathPrefix}/fonts/GinoraSans.otf`} as="font" crossOrigin="" />
         <link rel="preload" href={`${process.env.pathPrefix}/fonts/Magilio.otf`} as="font" crossOrigin="" />

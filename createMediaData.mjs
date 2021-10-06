@@ -29,7 +29,7 @@ async function getImages() {
   const files = await fs.readdir(imageDirectory);
   try {
     const images = files
-      .filter((file) => file.endsWith('.png'))
+      .filter((file) => file.endsWith('.webp'))
       .map(async (file) => {
         const fileName = file.substr(0, file.lastIndexOf('.'));
         return {
@@ -51,7 +51,7 @@ async function getImages() {
 export async function createData() {
   const mediaData = {};
   mediaData.isMaaS = true;
-  mediaData.elementSuffix = '.png';
+  mediaData.elementSuffix = '.webp';
   mediaData.colors = await getColors();
   mediaData.images = await getImages();
 

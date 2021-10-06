@@ -26,7 +26,7 @@ async function handleSave() {
   const dataUrl = canvasElement.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
   if (blob) {
-    saveAs(blob, 'Plantala.png');
+    saveAs(blob, 'Julala.png');
   }
 }
 

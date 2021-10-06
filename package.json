@@ -1,7 +1,7 @@
 {
-  "name": "plantala",
+  "name": "julala",
   "version": "0.1.0",
-  "homepage": "https://digitalwarenkombinat.github.io/plantala/",
+  "homepage": "https://digitalwarenkombinat.github.io/julala/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",

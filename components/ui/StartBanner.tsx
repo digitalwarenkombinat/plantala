@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const main = {
-  title: 'Malen! Strahlen! Plantala!',
-  description: 'Erstelle individuelle Mandalas aus historischen Pflanzendarstellungen.',
+  title: 'Malen! Strahlen! Julala!',
+  description: 'Erstelle individuelle Mandalas aus historischen Darstellungen.',
 };
 
 export default function Header() {

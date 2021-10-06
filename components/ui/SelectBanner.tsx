@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const main = {
-  description: 'Wähle maximal 5 Pflanzen aus!',
+  description: 'Wähle maximal 5 Elemente aus!',
 };
 
 export default function Header() {
