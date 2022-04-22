@@ -60,14 +60,14 @@ export function About({ onClose, open }: { onClose: () => void; open: boolean })
         </DialogContentText>
         <DialogContentText>
           Folge uns gern auf{' '}
-          <Link href="https://twitter.com/AnkaTrabantka" target="_blank" rel="noreferrer">
+          <Link href="https://twitter.com/digiwako" target="_blank" rel="noreferrer">
             Twitter
           </Link>{' '}
           und{' '}
-          <Link href="https://www.instagram.com/ankatrabantka" target="_blank" rel="noreferrer">
+          <Link href="https://www.instagram.com/digitalwarenkombinat" target="_blank" rel="noreferrer">
             Instagram
           </Link>{' '}
-          unter <i> @AnkaTrabantka </i>
+          unter <i> @digitalwarenkombinat </i>
         </DialogContentText>
       </DialogContent>
     </Dialog>
