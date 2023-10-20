@@ -1,150 +1,136 @@
 # Medienstation as a Service - MaaS
 
-Die _Medienstation as a Service_ (MaaS) bietet dir eine einfache Möglichkeit, die Vorzüge Plantalas mit deinen eigenen Bildern zu verbinden. Halbautomatisierte Schritte helfen dir dabei, auch ohne tiefgreifende technische Kenntnisse, deine Daten einzubinden und die Medienstation nach deinen Wünschen anzupassen.
+The _Media Station as a Service_ (MaaS) offers you a simple way to combine the advantages of Plantala with your own images. Semi-automated steps help you integrate your data and customize the media station to your liking, even without deep technical knowledge.
 
-## Funktionen
+## Features
 
-- in nur 3 Schritten zur eigenen Medienstation
-- automatisierter Bilderimport und Entfernen der Bildhintergründe
-- unterstützter Bearbeitungsmodus der Daten und Hinzufügen von Hintergrundinformationen
-- Farben werden anhand deines Startbildes analysiert
-- Farbschema der Medienstation frei wählbar
-- spielerisch ästhetische Wissensvermittlung mit deinen Daten
+✅ Create your own media station in just 3 steps.
 
-Im Folgenden zeigen wir dir, wie du deine eigene Medienstation erstellst.
+✅ Automated image import and background removal.
 
-<br />
+✅ Supported data editing and adding background information.
+
+✅ Colors are analyzed based on your starting image.
+
+✅ Customizable color scheme for the media station.
+
+✅ Enjoy a visually pleasing way to convey information with your data.
 
 # TL;DR
 
-- Kopiere deine Bilder in der Ordner `public/images/input` und entwirf ein Logo `public/images/logo.png` sowie ein Startbild `public/images/start.png`
-- Starte die Medienstation mit `docker-compose up -d --build`
-- Erzeuge die Mediendaten mit `docker exec -d plantala-app npm run media-data` und bearbeite Hintergrundinformationen der Bilder und Farbwerte deiner Medienstation in `public/mediaData.js`
+ 🚀 Copy your images to the `public/images/input` folder and design a logo `public/images/logo.png`, as well as a starting image `public/images/start.png`.
+  
+🚀 Start the media station with `docker-compose up -d --build`.
 
-<br />
+🚀 Generate media data with `docker exec -d plantala-app npm run media-data` and edit background information for images and color values for your media station in `public/mediaData.js`.
 
-# In 3 Schritten zur eigenen Medienstation
+# Creating Your Own Media Station in 3 Steps
 
-Deine eigene Medienstation erstellst du in 3 einfachen Schritten.
+You can create your own media station in three simple steps.
 
-1. Bilder kopieren
-2. Medienstation starten
-3. Bilder und Informationen anpassen
+1. Copy Images
+2. Start the Media Station
+3. Customize Images and Information
 
 ---
 
-<br />
+## Step 1. Copy Your Images 🎨
 
-## Schritt 1. Kopiere deine Bilder
+First, copy all your images to the `public/images/input` folder. All images will be automatically clipped (i.e., the background will be removed) when you start the media station and will be included in it.
 
-<br />
+Please note the following guidelines for your images:
 
-Kopiere zunächst all deine Bilder in den Ordner `public/images/input`. Alle Bilder werden beim Start der Medienstation automatisch freigestellt (d.h. der Hintergrund wird entfernt) und in diese eingebunden.
+- For the best results, use a single object with a solid background in each image.
+- The filename will be used as the title of the images in the media station. Please name the images according to the depicted object.
 
-Bitte beachte folgende Hinweise für deine Bilder:
+In addition, your media station needs a logo and a starting image. These two images do not need to be clipped and can be directly inserted into the `public/images` folder (not `public/images/input`) as `logo.png` and `start.png`, respectively.
 
-- Für ein bestmögliches Ergebnis verwende am besten ein einzelnes Objekt mit einfarbigem Hintergrund pro Bild.
-- Der Dateiname wird als Titel der Bilder in der Medienstation verwendet. Bitte benenne die Bilder entsprechend dem dargestellten Objekt.
+Once this is done, you can start your media station.
 
-<br />
+## Step 2. Start the Media Station 🚀 
 
-Zusätzlich benötigt deine Medienstation ein Logo und ein Startbild. Diese beiden Bilder müssen nicht freigestellt werden und können somit direkt als `logo.png` bzw. `start.png` in den Ordner `public/images` (nicht `public/images/input`) eingefügt werden.
+To start the media station, an application called _Docker_ is used. In simplified terms, _Docker_ is like another computer on your computer, allowing you to access the media station and initiate the removal of backgrounds from all your copied images.
 
-Ist dies erledigt, kannst du deine Medienstation starten.
+_Docker_ automatically installs all the necessary libraries when you start it. So, you don't need to install any additional applications on your computer except for _Docker_. To install it, click on [Install Docker](https://docs.docker.com/get-docker/) and select your operating system.
 
-<br />
-
-## Schritt 2. Medienstation starten
-
-<br />
-
-Zum Starten der Medienstation wird eine Anwendung namens _Docker_ verwendet. Vereinfacht gesagt ist _Docker_ ein weiterer Computer auf deinem Computer. Dadurch erhältst du die Möglichkeit die Medienstation aufzurufen und das Entfernen der Hintergründe von all deinen kopierten Bildern zu starten.
-
-_Docker_ installiert beim Starten automatisch alle benötigten Bibliotheken. Du musst auf deinem Computer somit keine weiteren Anwendungen außer _Docker_ installieren. Für die Installation klicke auf [Docker installieren](https://docs.docker.com/get-docker/) und wähle dein Betriebssystem aus.
-
-Nach abgeschlossener Installation kannst du deine Medienstation mit folgendem Aufruf im Terminal starten:
+After the installation is complete, you can start your media station with the following command in the terminal:
 
 ```
 docker-compose up -d --build
 ```
 
-Dabei werden 2 sogenannte Container gestartet. Der Container _plantala-media-data_ entfernt in all deinen kopierten Bildern den Hintergrund und beendet sich danach.
+This will start two containers. The _plantala-media-data_ container removes the backgrounds from all your copied images and then terminates.
 
-Der Container _plantala-app_ beinhaltet die komplette Medienstation und ist auf deinem Computer unter [diesem Link zu erreichen.](http://localhost:3000/)
+The _plantala-app_ container contains the complete media station and can be accessed on your computer at [this link](http://localhost:3000/).
 
-Hurra, deine Medienstation ist nun sichtbar. Damit all deine Bilder und Informationen in dieser erscheinen ist noch ein dritter und letzter Schritt notwendig.
+Congratulations, your media station is now visible. To have all your images and information appear in it, one more third and final step is needed.
 
-<br />
+## Step 3: Adding Background Information & Customizing the Color Scheme 🎨
 
-## Schritt 3: Hinzufügen von Hintergrundinformationen & Anpassen des Farbschemas
+Your copied images have all been clipped in the background and are now located next to your logo and starting image in the `public/images` folder.
 
-<br />
+To display the images in the media station, update the media data.
 
-Deine kopierten Bilder wurden alle im Hintergrund freigestellt und befinden sich nun neben deinem Logo sowie deinem Startbild im Ordner `public/images`.
-
-Damit die Bilder in der Medienstation erscheinen, aktualisiere die Mediendaten.
-
-Dies geschieht mit dem Terminalaufruf:
+This is done with the terminal command:
 
 ```
 docker exec -d plantala-app npm run media-data
 ```
 
-Öffne erneut den Link deiner Medienstation [mit diesem Link.](http://localhost:3000/)
+Open the link to your media station again [with this link](http://localhost:3000/).
 
-All deine Bilder werden nun in der Medienstation angezeigt. Weiterhin ist dein Logo und dein Startbild zu sehen. Dieses Startbild hat auch dafür gesorgt, dass sich das Farbschema der Medienstation verändert hat. Die bedeutendsten Farben aus dem Startbild werden nun als Primär- & Sekundärfarbe verwendet.
+All your images will now appear in the media station. Furthermore, your logo and starting image will be visible. This starting image has also changed the color scheme of the media station. The most significant colors from the starting image are now used as primary and secondary colors.
 
-Gern kannst du Anpassungen in den soeben erzeugten Mediendaten unter `public/mediaData.js` vornehmen.
+You are welcome to make adjustments to the newly generated media data in `public/mediaData.js`.
 
-Insgesamt 7 Farben wurden aus dem Startbild abgeleitet. Die Farbwerte sind als 6-stellige Webfarbe mit einem führenden Zahlenzeichen (#) angegeben. Mit der Website [Colordot](https://color.hailpixel.com/) kannst du eine Farbe deine Wahl aussuchen und jeden einzelnen Farbwert anpassen.
+A total of 7 colors have been derived from the starting image. The color values are given as 6-digit web colors with a leading hash symbol (#). You can choose your preferred color and customize each color value using the [Colordot website](https://color.hailpixel.com/).
 
-Wofür die einzelnen Farbwerte stehen, siehst du in der folgenden Liste:
+Here's what each color value represents:
 
 ```
-const primaryColor = '#799160';     // Primärfarbe der Medienstation
-const secondaryColor = '#e0bf96';   // Sekundärfarbe der Medienstation
-const backgroundColor = '#faebd7';  // Hintergrundfarbe der Medienstation
-const textColor = '#341419';        // Textfarbe der Medienstation
-const errorColor = '#f3aa1e';       // Farbe für Fehlermeldungen innerhalb der Medienstation
-const infoColor = '#ab465a';        // Farbe für Infomeldungen innerhalb der Medienstation
-const successColor = '#f3aa1e';     // Farbe für Erfolgsmeldungen innerhalb der Medienstation
+const primaryColor = '#799160';     // Primary color of the media station
+const secondaryColor = '#e0bf96';   // Secondary color of the media station
+const backgroundColor = '#faebd7';  // Background color of the media station
+const textColor = '#341419';        // Text color of the media station
+const errorColor = '#f3aa1e';       // Color for error messages within the media station
+const infoColor = '#ab465a';        // Color for info messages within the media station
+const successColor = '#f3aa1e';     // Color for success messages within the media station
 ```
 
-Neben den Farbwerten sind ebenfalls alle freigestellten Bilder in den Mediendaten enthalten. Auch hier kannst du gern Anpassungen vornehmen.
+The media data also includes all clipped images. You can make adjustments here as well.
 
-Wenn du mit Dateipfaden vertraut ist, ist ein Anpassung unter _source_ möglich.
+If you are familiar with file paths, you can make adjustments under _source_.
 
-Für jedes Bild sind folgende 5 Elemente hinterlegt:
+For each image, the following 5 elements are provided:
 
-- _name_ ist der aus dem Dateinamen abgeleitete Bildtitel für die Medienstation
-- _source_ ist die technische Pfadangabe zum freigestellten Bild
-- _description_ ist der Beschreibungstext zum Bild für die Darstellung in der Medienstation
-- _link_ bietet die Möglichkeit, eine externe Referenz wie bspw. zum Originaldokument anzugeben
-- _wiki_ bietet die Möglichkeit, eine Verlinkung zu Wikimedia o.ä. anzugeben
+- _name_ is the image title derived from the file name for the media station.
+- _source_ is the technical path to the clipped image.
+- _description_ is the description text for the image as displayed in the media station.
+- _link_ provides the option to specify an external reference, such as a link to the original document.
+- _wiki_ provides the option to include a link to Wikimedia or similar.
 
-All deine Anpassungen werden direkt in der Medienstation angezeigt. Öffne dafür den Link deiner Medienstation [mit diesem Link.](http://localhost:3000/)
+All your adjustments will be immediately displayed in the media station. To do so, open the link to your media station again [with this link](http://localhost:3000/).
 
-## Du bist fertig. Deine Medienstation kann nun bereitgestellt werden 🎉
+## You're done. Your media station can now be deployed 🎉
 
-Super! Deine Medienstation ist fertig und du kannst sie [hier ansehen.](http://localhost:3000/)
-Um die Medienstation mit anderen zu teilen kannst du sie exportieren.
+Great! Your media station is ready, and you can view it [here](http://localhost:3000/).
+To share the media station with others, you can export it.
 
-Dafür nutzt du erneut _Docker_ mit folgendem Aufruf:
+To do this, use _Docker_ again with the following command:
 
 ```
 docker exec -d plantala-app npm run build
 ```
 
-Deine Medienstation wird in 2 Varianten für dich exportiert:
+Your media station will be exported in two variants for you:
 
-1. Als Node.js unterstützte Produktionsanwendung im Ordner `.next` für deinen eigenen Server.
+1. As a Node.js-supported production application in the `.next` folder for your own server.
+2. As static HTML in the `out` folder, which can run independently (without a Node.js server).
 
-2. Als statisches HTML im Ordner `out`, welches eigenständig (ohne Node.js-Server) ausgeführt werden kann.
-
-Bist du mit allen Anpassungen deiner Medienstation zufrieden und hast sie erfolgreich exportiert, kannst du die _Docker_ Container mit folgendem Aufruf stoppen:
+Once you are satisfied with all the customizations of your media station and have successfully exported it, you can stop the _Docker_ containers with the following command:
 
 ```
 docker-compose stop
 ```
 
-Und nun viel Spaß mit deiner Medienstation.
+And now, enjoy your media station!
