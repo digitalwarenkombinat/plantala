@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  app:
+  plantala-app:
     container_name: plantala-app
     build:
       context: .
@@ -14,12 +14,11 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
+    restart: always
 
-  media-data:
+  plantala-media-data:
     container_name: plantala-media-data
-    build:
-      context: medienstationAsAService
-      dockerfile: Dockerfile
+    image: danielgatis/rembg
     volumes:
-      - ./public/images:/mediaData
-    command: -p /mediaData/input /mediaData
+      - ./public/images:/rembg
+    command: "p ./input ."
